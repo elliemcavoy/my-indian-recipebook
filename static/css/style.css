@@ -85,3 +85,9 @@
         left:18%;
         top:82%;
     }
+
+    .card-image img{
+      height: 200px;
+      width:100%;
+      
+    }
