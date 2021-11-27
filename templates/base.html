@@ -22,7 +22,7 @@
               <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="">Recipes</a></li>
+                <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
                 <li><a href="{{ url_for('login') }}">Log In</a></li>
                 <li><a href="{{ url_for('register') }}">Register</a></li>
                 <li><a href="{{ url_for('my_profile', username=session['user']) }}">My Profile</a></li>
@@ -33,7 +33,7 @@
         
           <ul class="sidenav" id="mobile-demo">
             <li><a href="{{ url_for('index') }}">Home</a></li>
-            <li><a href="">Recipes</a></li>
+            <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
             <li><a href="{{ url_for('login') }}">Log In</a></li>
             <li><a href="{{ url_for('register') }}">Register</a></li>
             <li><a href="{{ url_for('my_profile', username=session['user']) }}">My Profile</a></li>

@@ -77,7 +77,7 @@ def add_recipe():
     if request.method == "POST":
         recipe = {
             "meal_type_name": request.form.get("meal_type_name"),
-            "recipe_name": request.form.get("recipe_name"),
+            "name": request.form.get("name"),
             "ingredients": request.form.get("ingredients"),
             "method": request.form.get("method"),
             "created_by": session["user"]
@@ -100,7 +100,10 @@ def my_profile(username):
     return redirect(url_for("login"))
 
 
-
+@app.route("/recipes")
+def recipes():
+    recipes=mongo.db.recipes.find()
+    return render_template("recipes.html", recipes=recipes)
 
 
 
