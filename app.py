@@ -45,12 +45,13 @@ def register():
         mongo.db.users.insert_one(register)
         
         session["user"] = request.form.get("username").lower()
-        flash("Registration Successful!")
+        flash("Thank You for Registering")
 
     return render_template("register.html")
 
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
+    
     if request.method == "POST":
         recipe = {
             "meal_type_name": request.form.get("meal_type_name"),
@@ -59,7 +60,7 @@ def add_recipe():
             "method": request.form.get("method"),
             "created_by": session["user"]
         }
-        mongo.db.tasks.insert_one(recipes)
+        mongo.db.tasks.insert_one(recipe)
         flash("Recipe Added")
         
 

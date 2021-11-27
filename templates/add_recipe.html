@@ -11,7 +11,7 @@
 					<select id="meal_type_name" name="meal_type_name" class="validate" required>
                         <option value="" disabled selected>Choose Meal Type</option>
                         {% for meal in meal_type %}
-                            <option value="{{ meal_type.meal_type_name }}">{{ meal_type.meal_type_name }}</option>
+                            <option value="{{ meal.meal_type_name }}">{{ meal.meal_type_name }}</option>
                         {% endfor %}
                     </select>
 					<label for="meal_type_name">Meal Type</label>
