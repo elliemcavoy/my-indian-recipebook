@@ -94,9 +94,13 @@ def my_profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     if session["user"]:
-        return render_template("my_profile.html", username=username)
+        my_recipes=mongo.db.recipes.find_many()
+        return render_template("my_profile.html", username=username, my_recipes=my_recipes)
 
     return redirect(url_for("login"))
+
+
+
 
 
 
