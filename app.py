@@ -49,9 +49,27 @@ def register():
 
     return render_template("register.html")
 
-@app.route("/add_recipe", methods = ["GET", "POST"])
+@app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
-    return render_template("add_recipe.html")
+    if request.method == "POST":
+        recipe = {
+            "meal_type_name": request.form.get("meal_type_name"),
+            "recipe_name": request.form.get("recipe_name"),
+            "ingredients": request.form.get("ingredients"),
+            "method": request.form.get("method"),
+            "created_by": session["user"]
+        }
+        mongo.db.tasks.insert_one(recipes)
+        flash("Recipe Added")
+        
+
+    meal_type = mongo.db.meal_type.find().sort("meal_type_name")
+    return render_template("add_recipe.html", meal_type=meal_type)
+    
+
+
+
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

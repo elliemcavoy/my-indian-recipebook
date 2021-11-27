@@ -1,27 +1,29 @@
-<h3 class="center-align">Add Task</h3>
+{% extends "base.html" %}
+{% block content %}    
+    
+    <h3 class="center-align">Add Recipe</h3>
 
     <div class="row card-panel">
-        <form class="col s12" method="POST" action="">
-            <!-- category selection -->
-			<div class="row">
+        <form class="col s8 offset-s2" method="POST" action="{{ url_for('add_recipe') }}">
+            <div class="row">
 				<div class="input-field col s12">
-                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                    <i class="fas fa-folder-open prefix"></i>
 					<select id="meal_type_name" name="meal_type_name" class="validate" required>
-                        <option value="" disabled selected>Choose Category</option>
+                        <option value="" disabled selected>Choose Meal Type</option>
                         {% for meal in meal_type %}
                             <option value="{{ meal_type.meal_type_name }}">{{ meal_type.meal_type_name }}</option>
                         {% endfor %}
                     </select>
-					<label for="category_name">Meal Type</label>
+					<label for="meal_type_name">Meal Type</label>
 				</div>
 			</div>
             <!-- task name -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-pencil-alt prefix"></i>
-                    <input id="dish_name" name="dish_name" minlength="5" maxlength="50"
+                    <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50"
                         type="text" class="validate" required>
-                    <label for="dish_name">Dish Name</label>
+                    <label for="recipe_name">Dish Name</label>
                 </div>
             </div>
             <!-- task description -->
@@ -31,6 +33,14 @@
                     <textarea id="ingredients" name="ingredients" minlength="5"
                         maxlength="200" class="materialize-textarea validate" required></textarea>
                     <label for="ingredients">Ingredients</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-align-left prefix"></i>
+                    <textarea id="method" name="method" minlength="5"
+                        maxlength="200" class="materialize-textarea validate" required></textarea>
+                    <label for="method">Method</label>
                 </div>
             </div>
 			
@@ -44,3 +54,5 @@
             </div>
         </form>
     </div>
+
+    {% endblock %}
