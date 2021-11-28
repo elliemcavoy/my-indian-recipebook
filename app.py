@@ -89,10 +89,9 @@ def add_recipe():
             "method": request.form.get("method"),
             "created_by": session["user"]
         }
-        mongo.db.tasks.insert_one(recipe)
+        mongo.db.recipes.insert_one(recipe)
         flash("Recipe Added")
         
-
     meal_type = mongo.db.meal_type.find().sort("meal_type_name")
     return render_template("add_recipe.html", meal_type=meal_type)
     
@@ -141,6 +140,17 @@ def search():
         #flash("Recipe Added to Favourite")
     
 
+@app.route("/delete_recipe/<recipe>")
+def delete_recipe(recipe):
+    mongo.db.recipes.remove({"_id": ObjectId(recipe)})
+    flash("Recipe Successfully Deleted")
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
+    return render_template("my_profile.html", username=username, my_recipes=my_recipes)
+
+
+    
 
 
 
