@@ -106,9 +106,11 @@ def recipes():
     return render_template("recipes.html", recipes=recipes)
 
 
-@app.route("/recipecard")
-def recipecard():
-    return render_template("recipecard.html")
+@app.route("/recipecard/<recipe>", methods=["GET", "POST"])
+def recipecard(recipe):
+    recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
+
+    return render_template("recipecard.html", recipe=recipe)
 
 
 
