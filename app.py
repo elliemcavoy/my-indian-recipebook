@@ -113,6 +113,11 @@ def recipecard(recipe):
     return render_template("recipecard.html", recipe=recipe)
 
 
+@app.route("/add_favourites")
+def add_favourites():
+    return render_template("recipecard.html")
+
+
 
 
 if __name__ == "__main__":

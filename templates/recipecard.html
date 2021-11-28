@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
-<h3>{{ recipe.name }}</h3>
+<h3 class="center-align">{{ recipe.name }}</h3>
+<div class="center-align"><button href="">Add to favourites</button></div>
 <ul class="collapsible">
     <li>
-      <div class="collapsible-header"><i class="fas fa-book-open"></i>First</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      <div class="collapsible-header"><i class="fas fa-clipboard-list"></i>Ingredients</div>
+      <div class="collapsible-body"><span>{{ recipe.ingredients }}</span></div>
     </li>
     <li>
-      <div class="collapsible-header"><i class="material-icons"></i>Second</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      <div class="collapsible-header"><i class="fas fa-book-open"></i>Method</div>
+      <div class="collapsible-body"><span>{{ recipe.method }}</span></div>
     </li>
     <li>
-      <div class="collapsible-header"><i class="material-icons"></i>Third</div>
+      <div class="collapsible-header"><i class="material-icons"></i></div>
       <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
     </li>
   </ul>
