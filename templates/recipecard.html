@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 <h3 class="center-align">{{ recipe.name }}</h3>
-<div class="center-align"><button href="">Add to favourites</button></div>
-<ul class="collapsible">
+<div class="center-align">
+  <form method="POST" action = "">
+  <button type=submit>Add to favourites</button>
+  </form>
+  </div>
+  <ul class="collapsible">
     <li>
       <div class="collapsible-header"><i class="fas fa-clipboard-list"></i>Ingredients</div>
       <div class="collapsible-body"><span>{{ recipe.ingredients }}</span></div>

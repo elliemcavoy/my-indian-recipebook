@@ -113,18 +113,26 @@ def recipecard(recipe):
     return render_template("recipecard.html", recipe=recipe)
 
 
-@app.route("/add_favourites/<recipe>")
-def add_favourites():
-    recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
-    favourite={
-            "meal_type_name": recipe.meal_type,
-            "name": recipe.name,
-            "ingredients": recipe.ingredients,
-            "method": recipe.method,
-            "added_by": session["user"]
-    }
-    mongo.db.favourites.insert(favourite)
-    return render_template("recipecard.html")
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    recipes = mongo.db.recipes.find({"$text": {"$search": query}})
+    return render_template("recipes.html", recipes=recipes)
+
+#@app.route("/add_favourites/<recipe>", methods=["GET", "POST"])
+#def add_favourites(recipe):
+    #if request.method == "POST":
+        #recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
+        #favourite={
+            #"meal_type_name": "{{recipe.meal_type}}",
+            #"name": "{{recipe.name}}",
+            #"ingredients": "{{recipe.ingredients}}",
+            #"method": "{{recipe.method}}",
+            #"added_by": session["user"]
+        #}
+        #mongo.db.favourites.insert_one(favourite)
+        #flash("Recipe Added to Favourite")
+    
 
 
 
