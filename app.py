@@ -113,8 +113,17 @@ def recipecard(recipe):
     return render_template("recipecard.html", recipe=recipe)
 
 
-@app.route("/add_favourites")
+@app.route("/add_favourites/<recipe>")
 def add_favourites():
+    recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
+    favourite={
+            "meal_type_name": recipe.meal_type,
+            "name": recipe.name,
+            "ingredients": recipe.ingredients,
+            "method": recipe.method,
+            "added_by": session["user"]
+    }
+    mongo.db.favourites.insert(favourite)
     return render_template("recipecard.html")
 
 
