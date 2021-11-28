@@ -106,6 +106,11 @@ def recipes():
     return render_template("recipes.html", recipes=recipes)
 
 
+@app.route("/recipecard")
+def recipecard():
+    return render_template("recipecard.html")
+
+
 
 
 if __name__ == "__main__":
