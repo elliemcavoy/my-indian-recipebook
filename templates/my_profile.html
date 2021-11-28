@@ -22,7 +22,26 @@
               </div>
             </div>
             {% endfor %}
-          </div>    
+          </div>  
+        
+          <h4 class = "center-align">My Favourites</h4>
+          <div class="row">
+            {% for favourite in my_favourites %}
+              <div class="col s12 m6 l4 inline-block">
+                <div class="card">
+                  <div class="card-image">
+                    <img src="">
+                    <a class="btn-floating halfway-fab waves-effect waves-light red" href=""><i class="fas fa-eye"></i></a>
+                  </div>
+                  <div class="card-content center-align">
+                    <span class="card-title">{{ favourite.name }} </span>
+                    
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>  
+
         
     
     
