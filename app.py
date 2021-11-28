@@ -101,7 +101,8 @@ def my_profile(username):
         {"username": session["user"]})["username"]
     if session["user"]:
         my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
-        return render_template("my_profile.html", username=username, my_recipes=my_recipes)
+        favourites=mongo.db.favourites.find({"added_by": session["user"]})
+        return render_template("my_profile.html", username=username, my_recipes=my_recipes, favourites=favourites)
 
     return redirect(url_for("login"))
 
@@ -149,8 +150,6 @@ def delete_recipe(recipe):
     my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
     return render_template("my_profile.html", username=username, my_recipes=my_recipes)
 
-
-    
 
 
 
