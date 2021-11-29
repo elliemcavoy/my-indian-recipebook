@@ -2,7 +2,7 @@
 {% block content %}
 <h3 class="center-align">{{ recipe.name }}</h3>
 <div class="center-align">
-  <form method="POST" action = "">
+  <form method="POST" action = "{{ url_for('add_favourites', recipe=recipe._id) }}">
   <button type=submit>Add to favourites</button>
   </form>
   </div>

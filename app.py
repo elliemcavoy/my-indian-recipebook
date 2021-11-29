@@ -113,7 +113,7 @@ def recipes():
     return render_template("recipes.html", recipes=recipes)
 
 
-@app.route("/recipecard/<recipe>", methods=["GET", "POST"])
+@app.route("/recipecard/<recipe>")
 def recipecard(recipe):
     recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
 
@@ -126,19 +126,20 @@ def search():
     recipes = mongo.db.recipes.find({"$text": {"$search": query}})
     return render_template("recipes.html", recipes=recipes)
 
-#@app.route("/add_favourites/<recipe>", methods=["GET", "POST"])
-#def add_favourites(recipe):
-    #if request.method == "POST":
-        #recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
-        #favourite={
-            #"meal_type_name": "{{recipe.meal_type}}",
-            #"name": "{{recipe.name}}",
-            #"ingredients": "{{recipe.ingredients}}",
-            #"method": "{{recipe.method}}",
-            #"added_by": session["user"]
-        #}
-        #mongo.db.favourites.insert_one(favourite)
-        #flash("Recipe Added to Favourite")
+@app.route("/add_favourites/<recipe>", methods=["GET", "POST"])
+def add_favourites(recipe):
+    recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
+    if request.method == "POST":
+        favourite={
+            "meal_type_name": request({"recipe.meal_type"}),
+            "name": request({"recipe.name"}),
+            "ingredients": "recipe.ingredients",
+            "method": "recipe.method",
+            "added_by": session["user"]
+        }
+        mongo.db.favourites.insert_one(favourite)
+        flash("Recipe Added to Favourite")
+    return render_template("recipecard.html", recipe=recipe)
     
 
 @app.route("/delete_recipe/<recipe>")
