@@ -126,6 +126,18 @@ def favourite_recipecard(favourite):
     return render_template("favourite_recipecard.html", favourite=favourite)
 
 
+@app.route("/delete_favourite/<favourite>")
+def delete_favourite(favourite):
+    mongo.db.favourites.delete_one({"_id": ObjectId(favourite)})
+    flash("Recipe removed for Favourites")
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
+    favourites=mongo.db.favourites.find({"added_by": session["user"]})
+    return render_template("my_profile.html", username=username, my_recipes=my_recipes, favourites=favourites)
+    
+
+
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
