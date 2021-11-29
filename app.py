@@ -119,6 +119,12 @@ def recipecard(recipe):
 
     return render_template("recipecard.html", recipe=recipe)
 
+@app.route("/favourite_recipecard/<favourite>")
+def favourite_recipecard(favourite):
+    favourite=mongo.db.favourites.find_one({"_id": ObjectId(favourite)})
+
+    return render_template("favourite_recipecard.html", favourite=favourite)
+
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
