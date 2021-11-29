@@ -129,12 +129,17 @@ def search():
 @app.route("/add_favourites/<recipe>", methods=["GET", "POST"])
 def add_favourites(recipe):
     recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
+    meal_type=recipe.get("meal_type_name")
+    name=recipe.get("name")
+    ingredients=recipe.get("ingredients")
+    method=recipe.get("method")
+    
     if request.method == "POST":
         favourite={
-            "meal_type_name": request({"recipe.meal_type"}),
-            "name": request({"recipe.name"}),
-            "ingredients": "recipe.ingredients",
-            "method": "recipe.method",
+            "meal_type_name": meal_type,
+            "name": name,
+            "ingredients": ingredients,
+            "method": method,
             "added_by": session["user"]
         }
         mongo.db.favourites.insert_one(favourite)
