@@ -175,6 +175,22 @@ def delete_recipe(recipe):
     return render_template("my_profile.html", username=username, my_recipes=my_recipes)
 
 
+@app.route("/edit_recipe/<recipe>", methods=["GET", "POST"])
+def edit_recipe(recipe):
+    meal_type = mongo.db.meal_type.find().sort("meal_type_name")
+    if request.method == "POST":
+        submit = {
+            "meal_type_name": request.form.get("meal_type_name"),
+            "name": request.form.get("name"),
+            "ingredients": request.form.get("ingredients"),
+            "method": request.form.get("method"),
+            "created_by": session["user"]
+        }
+        mongo.db.recipes.update({"_id": ObjectId(recipe)}, submit)
+        flash("Recipe Updated")
+    return render_template("edit_recipe.html", recipe=recipe, meal_type=meal_type)
+
+
 
 
 if __name__ == "__main__":
