@@ -2,6 +2,7 @@ import os
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
+from flask_split import split
 from flask_pymongo import PyMongo 
 from bson.objectid import ObjectId 
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -116,8 +117,10 @@ def recipes():
 @app.route("/recipecard/<recipe>")
 def recipecard(recipe):
     recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
+    method=recipe.get("method").split(".")
+    
 
-    return render_template("recipecard.html", recipe=recipe)
+    return render_template("recipecard.html", recipe=recipe, method=method)
 
 @app.route("/favourite_recipecard/<favourite>")
 def favourite_recipecard(favourite):
@@ -189,6 +192,9 @@ def edit_recipe(recipe):
         mongo.db.recipes.update({"_id": ObjectId(recipe)}, submit)
         flash("Recipe Updated")
     return render_template("edit_recipe.html", recipe=recipe, meal_type=meal_type)
+
+
+
 
 
 

@@ -16,7 +16,9 @@
     </li>
     <li>
       <div class="collapsible-header"><i class="fas fa-book-open"></i>Method</div>
-      <div class="collapsible-body"><span>{{ recipe.method }}</span></div>
+      {% for item in method %}
+      <div class="collapsible-body"><span>{{ item }}</span></div>
+      {% endfor %}
     </li>
     
   </ul>
