@@ -1,9 +1,11 @@
 import os
+import random
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_split import split
 from flask_pymongo import PyMongo 
+from flask_paginate import Pagination, get_page_parameter, get_page_args
 from bson.objectid import ObjectId 
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -21,6 +23,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/index")
 def index():
+
     return render_template("index.html")
 
 
@@ -118,8 +121,6 @@ def recipes():
 def recipecard(recipe):
     recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
     method=recipe.get("method").split(".")
-    
-
     return render_template("recipecard.html", recipe=recipe, method=method)
 
 @app.route("/favourite_recipecard/<favourite>")

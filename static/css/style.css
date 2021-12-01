@@ -1,3 +1,17 @@
+.nav-wrapper{
+  background-color: rgba(155, 154, 154, 0.87);
+
+}
+
+.nav-wrapper a{
+  color: rgba(255, 136, 0, 0.801) ;
+  font-weight: 500;
+  text-shadow: 2px 2px #fcfcfcd7;
+}
+
+.text-shadow{
+  text-shadow: 2px 2px #fcfcfcd7;
+}
 #logo-container{
     margin:0px;
     padding:0px;
