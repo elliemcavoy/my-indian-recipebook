@@ -23,7 +23,6 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/index")
 def index():
-
     return render_template("index.html")
 
 
@@ -194,8 +193,9 @@ def edit_recipe(recipe):
         flash("Recipe Updated")
     return render_template("edit_recipe.html", recipe=recipe, meal_type=meal_type)
 
-@app.route("/voting")
-def voting():
+@app.route("/voting/<recipe>", methods=["GET", "POST"])
+def voting(recipe):
+    recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
     if request.method == "POST":
         votes={
             "vote": request.form.getlist('vote'),

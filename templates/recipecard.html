@@ -23,7 +23,7 @@
     
   </ul>
   <div>
-    <form method="POST" action="#">
+    <form method="POST" action="{{ url_for('voting')}}">
     <p>
       <label>
         <input class="with-gap" name="vote" id="upvote" value="upvote" type="radio" checked />
@@ -36,6 +36,9 @@
         <span><i class="fas fa-thumbs-down"></i></span>
       </label>
     </p>
+    <button type="submit" class="btn-large">
+      Vote<i class="fas fa-plus-square right"></i>
+  </button>
   </form>
   </div>
 {% endblock %}
