@@ -194,7 +194,16 @@ def edit_recipe(recipe):
         flash("Recipe Updated")
     return render_template("edit_recipe.html", recipe=recipe, meal_type=meal_type)
 
-
+@app.route("/voting")
+def voting():
+    if request.method == "POST":
+        votes={
+            "vote": request.form.getlist('vote'),
+            "recipe_name": {{ recipe.name }},
+            "added_by": session["user"]
+        }
+        mongo.db.vote.insert_one(votes)
+    return render_template("recipecard.html", recipe=recipe, method=method)
 
 
 
