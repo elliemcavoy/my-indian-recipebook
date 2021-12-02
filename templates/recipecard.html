@@ -22,6 +22,7 @@
     </li>
     
   </ul>
+  {% if session.user %}
   <div>
     <form method="POST" action="{{ url_for('voting', recipe=recipe._id)}}">
     <p>
@@ -41,4 +42,5 @@
   </button>
   </form>
   </div>
+  {% endif %}
 {% endblock %}

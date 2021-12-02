@@ -196,14 +196,18 @@ def edit_recipe(recipe):
 @app.route("/voting/<recipe>", methods=["GET", "POST"])
 def voting(recipe):
     recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
+    name=recipe.get("name")
+    method=recipe.get("method").split(".")
     if request.method == "POST":
         votes={
             "vote": request.form.getlist('vote'),
-            "recipe_name": {{ recipe.name }},
+            "recipe_name": name,
             "added_by": session["user"]
         }
         mongo.db.vote.insert_one(votes)
-    return render_template("recipecard.html", recipe=recipe, method=method)
+        flash("Thank you for voting")
+        return render_template("recipecard.html", recipe=recipe, method=method)
+    
 
 
 
