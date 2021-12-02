@@ -1,5 +1,6 @@
 import os
 import random
+import json
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -8,6 +9,7 @@ from flask_pymongo import PyMongo
 from flask_paginate import Pagination, get_page_parameter, get_page_args
 from bson.objectid import ObjectId 
 from werkzeug.security import generate_password_hash, check_password_hash
+from collections import Counter
 if os.path.exists("env.py"):
     import env
 
@@ -23,7 +25,24 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/index")
 def index():
-    return render_template("index.html")
+    x=[]
+    results=mongo.db.vote.find({"vote": "upvote"})
+    #recipe_name=results('recipe_name')
+    for item in results:
+        
+        recipe_name=item.get('recipe_name')
+        x.append(recipe_name)
+        counter1=Counter(x)
+        votes=dict(counter1.most_common(3))
+
+    print(x)
+    print(votes)
+    
+    #counter1=Counter({results})
+    #common_element=counter1.most_common(2)
+    
+    return render_template("index.html", results=results, votes=votes)
+
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -208,7 +227,10 @@ def voting(recipe):
         flash("Thank you for voting")
         return render_template("recipecard.html", recipe=recipe, method=method)
     
-
+@app.route("/highest_rated")
+def highest_rated():
+    list=mongo.db.vote.find({"vote": "upvote"})
+    print(list)
 
 
 
