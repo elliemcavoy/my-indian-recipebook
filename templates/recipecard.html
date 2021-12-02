@@ -23,7 +23,7 @@
     
   </ul>
   <div>
-    <form method="POST" action="{{ url_for('voting')}}">
+    <form method="POST" action="{{ url_for('voting', recipe=recipe._id)}}">
     <p>
       <label>
         <input class="with-gap" name="vote" id="upvote" value="upvote" type="radio" checked />
