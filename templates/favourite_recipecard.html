@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<h3 class="center-align">{{ favourite.name }}</h3>
-<div class="center-align">
-  <ul class="collapsible">
+<h2 class="center-align heading">{{ favourite.name }}</h2>
+<div class="row">
+  <div class="col s10 offset-s1">
+  <ul class="collapsible page-text">
     <li>
       <div class="collapsible-header"><i class="fas fa-utensils"></i>{{ favourite.meal_type_name }}</div>
     </li>
@@ -16,4 +17,6 @@
     </li>
     
   </ul>
+</div>
+</div>
 {% endblock %}
