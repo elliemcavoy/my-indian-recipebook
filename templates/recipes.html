@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h4 class = "center-align">Recipes</h4>
+<h2 class = "center-align heading">Recipes</h2>
 <div class="row card-panel grey lighten-5">
   <form action="{{ url_for('search') }}" method="post" class="col s12">
       <div class="row valign-wrapper center-align">
@@ -23,7 +23,7 @@
     
         <div class="row">
           {% for recipe in recipes %}
-            <div class="col s12 m6 l4 inline-block">
+            <div class="col s12 m6 l4 inline-block page-text">
               <div class="card">
                 <div class="card-image">
                   <img src="">

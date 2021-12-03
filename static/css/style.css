@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai&family=Delius+Unicase&display=swap');
 
 .nav-wrapper{
   background-color: rgba(155, 154, 154, 0.87);
@@ -7,8 +7,10 @@
 
 #brand-logo{
   font-size:35px;
+  font-weight:600;
   padding-left:10px;
   color: rgba(255, 136, 0) ;
+  font-family: 'Delius Unicase'
   
 }
 .nav-wrapper a{
@@ -46,6 +48,7 @@
         text-align:center;
         color: rgba(255, 136, 0) ;
         text-shadow: 2px 2px #1b1b1be8;
+        font-weight: 600;
         font-size: 35px;
         font-family: 'Arima Madurai';
         }
@@ -82,4 +85,23 @@
     .flashes h4{
       margin:0px;
       padding-top:5px;
+    }
+
+    .heading{
+      font-family: 'Arima Madurai';
+      color: rgba(255, 136, 0) ;
+      text-shadow: 2px 2px #1b1b1be8;
+    }
+
+    .page-text{
+      font-family: 'Arima Madurai';
+      color:grey;
+      font-size:20px;
+
+    }
+
+    .page-text i{
+      color: rgba(255, 136, 0) ;
+      text-shadow: 2px 2px #1b1b1be8;
+      padding:5px;
     }
