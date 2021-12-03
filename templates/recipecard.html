@@ -3,7 +3,7 @@
 <h3 class="center-align">{{ recipe.name }}</h3>
 <div class="center-align">
   <form method="POST" action = "{{ url_for('add_favourites', recipe=recipe._id) }}">
-  <button type=submit>Add to favourites</button>
+  <button type=submit class="btn-large">Add to favourites</button>
   </form>
   </div>
   <ul class="collapsible">
@@ -23,7 +23,10 @@
     
   </ul>
   {% if session.user %}
-  <div>
+  <div class="center-align">
+    <p>
+      Enjoyed this recipe?
+    </p>
     <form method="POST" action="{{ url_for('voting', recipe=recipe._id)}}">
     <p>
       <label>
@@ -38,7 +41,7 @@
       </label>
     </p>
     <button type="submit" class="btn-large">
-      Vote<i class="fas fa-plus-square right"></i>
+      Vote
   </button>
   </form>
   </div>

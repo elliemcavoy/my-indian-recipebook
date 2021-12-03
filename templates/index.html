@@ -17,7 +17,7 @@
   </section>
   <section>
     <div class="row about">
-        <div class="col s7 inline-block">
+        <div class="col s12 center-align">
             <div class="about-text">
     <h2>My Indian Recipes</h2>
     <p>A place to share all your spicy dishes! Add and share your own recipes or find delicious recipes from fellow chefs.</p>
@@ -27,12 +27,13 @@
     </div>
 </section>
 
-<div class="row">
+<div class="row center-align">
+  <h2>Recipe Leaderboard</h2>
   {% for vote in votes %}
     <div class="col s12 center-align">
       <i class="fas fa-trophy"></i>
       {{vote}}
-      
+      <i class="fas fa-trophy"></i>
     </div>
   {% endfor %}
 </div>
