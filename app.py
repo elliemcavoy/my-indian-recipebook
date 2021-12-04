@@ -108,6 +108,15 @@ def add_recipe():
             "image": request.form.get("image"),
             "created_by": session["user"]
         }
+        if request.form.get("image") == [""]:
+            recipe = {
+                "meal_type_name": request.form.get("meal_type_name"),
+                "name": request.form.get("name"),
+                "ingredients": request.form.get("ingredients"),
+                "method": request.form.get("method"),
+                "image": request.form.get("https://tse2.mm.bing.net/th?id=OIP.GMMoVhRWKruFznUmJkqrMAHaHa&pid=Api&P=0&w=300&h=300"),
+                "created_by": session["user"]
+            }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe Added")
         
@@ -129,6 +138,9 @@ def my_profile(username):
 @app.route("/recipes")
 def recipes():
     recipes=mongo.db.recipes.find()
+    
+    #if recipe.image == []:
+        #recipe.image = "https://tse2.mm.bing.net/th?id=OIP.GMMoVhRWKruFznUmJkqrMAHaHa&pid=Api&P=0&w=300&h=300"
     return render_template("recipes.html", recipes=recipes)
 
 
