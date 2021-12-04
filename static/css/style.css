@@ -109,6 +109,10 @@
     .btn-floating i{
       color:rgba(155, 154, 154, 0.87);
     }
+
+    .info-form{
+      padding:10px;
+    }
     
     .collapsible i{
       color: rgba(255, 136, 0) ;
@@ -122,4 +126,10 @@
     .buttons:hover{
       background-color: rgba(155, 154, 154, 0.87);
       
+    }
+
+    .form-icon{
+      color: rgba(255, 136, 0) ;
+      text-shadow: 2px 2px #1b1b1be8;
+      padding:5px;
     }
