@@ -27,7 +27,6 @@ mongo = PyMongo(app)
 def index():
     x=[]
     results=mongo.db.vote.find({"vote": "upvote"})
-    #recipe_name=results('recipe_name')
     for item in results:
         
         recipe_name=item.get('recipe_name')
@@ -37,9 +36,6 @@ def index():
 
     print(x)
     print(votes)
-    
-    #counter1=Counter({results})
-    #common_element=counter1.most_common(2)
     
     return render_template("index.html", results=results, votes=votes)
 
@@ -139,7 +135,8 @@ def recipes():
 def recipecard(recipe):
     recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
     method=recipe.get("method").split(".")
-    return render_template("recipecard.html", recipe=recipe, method=method)
+    ingredients=recipe.get("ingredients").split(",")
+    return render_template("recipecard.html", recipe=recipe, method=method, ingredients=ingredients)
 
 @app.route("/favourite_recipecard/<favourite>")
 def favourite_recipecard(favourite):
@@ -226,11 +223,6 @@ def voting(recipe):
         mongo.db.vote.insert_one(votes)
         flash("Thank you for voting")
         return render_template("recipecard.html", recipe=recipe, method=method)
-    
-@app.route("/highest_rated")
-def highest_rated():
-    list=mongo.db.vote.find({"vote": "upvote"})
-    print(list)
 
 
 

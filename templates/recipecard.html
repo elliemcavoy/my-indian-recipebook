@@ -14,7 +14,9 @@
     </li>
     <li>
       <div class="collapsible-header"><i class="fas fa-clipboard-list"></i>Ingredients <i class="fas fa-arrow-down"></i></div>
-      <div class="collapsible-body"><span>{{ recipe.ingredients }}</span></div>
+      {% for ingredient in ingredients %}
+      <div class="collapsible-body"><span>{{ ingredient }}</span></div>
+      {% endfor %}
     </li>
     <li>
       <div class="collapsible-header"><i class="fas fa-book-open"></i>Method <i class="fas fa-arrow-down"></i></div>
