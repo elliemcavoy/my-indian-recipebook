@@ -170,6 +170,7 @@ def add_favourites(recipe):
     name=recipe.get("name")
     ingredients=recipe.get("ingredients")
     method=recipe.get("method")
+    image=recipe.get("image")
     
     if request.method == "POST":
         favourite={
@@ -177,6 +178,7 @@ def add_favourites(recipe):
             "name": name,
             "ingredients": ingredients,
             "method": method,
+            "image": image,
             "added_by": session["user"]
         }
         mongo.db.favourites.insert_one(favourite)

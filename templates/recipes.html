@@ -5,14 +5,14 @@
 <div class="row card-panel grey lighten-5">
   <form action="{{ url_for('search') }}" method="post" class="col s12">
       <div class="row valign-wrapper center-align">
-          <div class="input-field col s12 m8">
-              <i class="fas fa-search prefix light-blue-text text-darken-4"></i>
+          <div class="input-field col s12 m8 search">
+              <i class="fas fa-search prefix"></i>
               <input type="text" name="query" id="query" minlength="3" class="validate" required>
               <label for="query">Search Recipes</label>
           </div>
           <div class="col s12 m4">
-              <a href="{{ url_for('recipes') }}" class="red btn text-shadow">Reset</a>
-              <button type="submit" class="light-blue darken-1 btn text-shadow">
+              <a href="{{ url_for('recipes') }}" class="btn grey-btn">Reset</a>
+              <button type="submit" class="btn orange-btn">
                   <i class="fas fa-search left"></i> Search
               </button>
           </div>
@@ -25,8 +25,8 @@
           {% for recipe in recipes %}
             <div class="col s12 m6 l4 inline-block page-text">
               <div class="card">
-                <div class="card-image">
-                  <img src="">
+                <div class="card-image images">
+                  <img src="{{ recipe.image }}">
                   <a class="btn-floating halfway-fab waves-effect waves-light buttons" href="{{ url_for('recipecard', recipe=recipe._id) }}"> View</a>
                 </div>
                 <div class="card-content center-align">
