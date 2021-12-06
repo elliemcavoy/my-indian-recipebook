@@ -132,7 +132,7 @@ def my_profile(username):
 
     return redirect(url_for("login"))
 
-
+#pagination implemented with help from: https://stackoverflow.com/questions/54053873/implementation-of-pagination-using-flask-paginate-pymongo
 @app.route("/recipes")
 def recipes():
     search = False

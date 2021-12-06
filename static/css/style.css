@@ -161,3 +161,31 @@
     .footer-container{
       padding-bottom:10px;
     }
+
+.page-links nav{
+  text-align:center;
+  background-color: white;
+  width:100%;
+
+}
+
+.page-links li{
+  text-align:center;
+  height:70%;
+
+}
+
+.pagination a {
+  
+  height:100%;
+  border-radius: 5px;
+}
+
+.pagination{
+  display:inline-block;
+}
+
+
+.pagination li.active {
+  background-color: orange;
+}
