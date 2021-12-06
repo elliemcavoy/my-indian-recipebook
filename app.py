@@ -162,8 +162,10 @@ def recipecard(recipe):
 @app.route("/favourite_recipecard/<favourite>")
 def favourite_recipecard(favourite):
     favourite=mongo.db.favourites.find_one({"_id": ObjectId(favourite)})
+    method=favourite.get("method").split(".")
+    ingredients=favourite.get("ingredients").split(",")
 
-    return render_template("favourite_recipecard.html", favourite=favourite)
+    return render_template("favourite_recipecard.html", favourite=favourite, method=method, ingredients=ingredients)
 
 
 @app.route("/delete_favourite/<favourite>")
