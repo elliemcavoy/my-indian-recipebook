@@ -5,8 +5,8 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_split import split
+from flask_paginate import Pagination, get_page_parameter
 from flask_pymongo import PyMongo 
-from flask_paginate import Pagination, get_page_parameter, get_page_args
 from bson.objectid import ObjectId 
 from werkzeug.security import generate_password_hash, check_password_hash
 from collections import Counter
@@ -19,6 +19,8 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
+
+RECIPES_PER_PAGE=2
 
 mongo = PyMongo(app)
 
@@ -133,11 +135,19 @@ def my_profile(username):
 
 @app.route("/recipes")
 def recipes():
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    page = request.args.get(get_page_parameter(), type=int, default=1)
     recipes=mongo.db.recipes.find()
+    per_page=5
+    allrecipe = mongo.db.recipes.find().skip((page - 1) * per_page).limit(per_page)
     
-    #if recipe.image == []:
-        #recipe.image = "https://tse2.mm.bing.net/th?id=OIP.GMMoVhRWKruFznUmJkqrMAHaHa&pid=Api&P=0&w=300&h=300"
-    return render_template("recipes.html", recipes=recipes)
+    pagination = Pagination(page=page,per_page=5 ,total=allrecipe.count(), search=search, record_name='allpost')      
+    return render_template('recipes.html', recipes=allrecipe, pagination=pagination)
+    
+
 
 
 @app.route("/recipecard/<recipe>")
