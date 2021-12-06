@@ -142,10 +142,10 @@ def recipes():
         search = True
     page = request.args.get(get_page_parameter(), type=int, default=1)
     recipes=mongo.db.recipes.find()
-    per_page=5
+    per_page=6
     allrecipe = mongo.db.recipes.find().skip((page - 1) * per_page).limit(per_page)
     
-    pagination = Pagination(page=page,per_page=5 ,total=allrecipe.count(), search=search, record_name='allpost')      
+    pagination = Pagination(page=page,per_page=6 ,total=allrecipe.count(), search=search, record_name='allpost')      
     return render_template('recipes.html', recipes=allrecipe, pagination=pagination)
     
 

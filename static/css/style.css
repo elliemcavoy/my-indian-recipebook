@@ -102,6 +102,12 @@
 
     }
 
+    .page-text-link{
+      font-family: 'Arima Madurai';
+      color:grey;
+      font-size:30px;
+    }
+
     .page-text i{
       color: rgba(255, 136, 0) ;
       text-shadow: 2px 2px #1b1b1be8;
