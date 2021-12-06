@@ -156,7 +156,8 @@ def recipecard(recipe):
     recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
     method=recipe.get("method").split(".")
     ingredients=recipe.get("ingredients").split(",")
-    return render_template("recipecard.html", recipe=recipe, method=method, ingredients=ingredients)
+    time=recipe.get("time")
+    return render_template("recipecard.html", recipe=recipe, method=method, ingredients=ingredients, time=time)
 
 @app.route("/favourite_recipecard/<favourite>")
 def favourite_recipecard(favourite):
