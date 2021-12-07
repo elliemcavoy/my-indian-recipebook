@@ -101,19 +101,27 @@ As a user of the website, the following actions and results would need to be ach
 <h4>Manual Testing</h4>
 I have carried out a lot of manual testing on different aspects of this project. Please see detailed manual testing logs <a href="testing.md"> here </a>.
 Please see below a brief overview of the testing carried out:
-| Page        | Bugs           | Status  |
-|:------------- |:-------------| :-----:|
-| Main Page(visitor)     | No issues found | Good |
-| Main Page(logged in)     | No issues found      | Good |
-| Recipe Page(visitor) | No issues found  | Good |
-| Recipe Page(logged in Visitor) | No issues found     | Good |
-| Recipe Page(logged in Author) | No issues found     | Good |
-| Registration Page | No issues found     | Good |
-| Login Page) | No issues found     | Good |
-| User Portal | No issues found     | Good |
-| Admin Portal | No issues found     | Good |
-| Create New Recipe | No issues found    | Good |
-| Update Recipe | No issues found     | Good |
+
+| Page                  | Bugs           | Status  |
+|---------------------- |----------------| ------  |
+| Main Page (user)    | No issues found| Good    |
+| Main Page (user logged in)  | No issues found| Good    |
+| Register Page (user)  | No issues found| Good    |
+| Log In Page (user)  | No issues found| Good    |
+| Recipe Page (user)  | No issues found| Good    |
+| Recipe Page (user logged in) | No issues found     | Good |
+| Recipe Page (admin logged in) | No issues found     | Good |
+| Individual Recipecard (user) | No issues found     | Good |
+| Individual Recipecard (user logged in) | No issues found     | Good |
+| User Profile | No issues found     | Good |
+| Add New Recipe | No issues found    | Good |
+| Update Recipe (user's own recipe) | No issues found     | Good |
+| Update Recipe (admin user)| No issues found     | Good |
+| Delete Recipe (user's own recipe) | No issues found     | Good |
+| Delete Recipe (admin user) | No issues found     | Good |
+| Add to favourites | No issues found     | Good |
+| View favourites recipecard | ISSUE   | Good |
+
 
 
 <h2 id="deployment"><u>Deployment</u></h2>
