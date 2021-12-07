@@ -10,9 +10,23 @@
   font-weight:600;
   padding-left:10px;
   color: rgba(255, 136, 0) ;
-  font-family: 'Delius Unicase'
+  font-family: 'Delius Unicase';
+  width:78%;
   
 }
+
+@media(max-width:615px){
+  #brand-logo{
+    font-size:25px;
+  }
+}
+
+@media(max-width:445px){
+  #brand-logo{
+    font-size:17px;
+  }
+}
+
 .nav-wrapper a{
   
   font-weight: 500;
@@ -54,12 +68,11 @@
         }
   
     
-    #button{
-      z-index:2;
-        position:absolute;
-        left:18%;
-        top:82%;
-    }
+@media(max-width:975px){
+  #bubble{
+    display:none;
+  }
+}
 
     .card-image img{
       height: 200px;
