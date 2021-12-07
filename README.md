@@ -98,29 +98,30 @@ As a user of the website, the following actions and results would need to be ach
 <li>W3C HTML Validator</li>
 <li>W3C CSS Validator</li>
 </ul>
+
 <h4>Manual Testing</h4>
 I have carried out a lot of manual testing on different aspects of this project. Please see detailed manual testing logs <a href="testing.md"> here </a>.
-Please see below a brief overview of the testing carried out:
+Please see below a brief overview of the testing carried out. Any issues found are documented in the testing log.
 
-| Page                  | Bugs           | Status  |
-|---------------------- |----------------| ------  |
-| Main Page (user)    | No issues found| Good    |
-| Main Page (user logged in)  | No issues found| Good    |
-| Register Page (user)  | No issues found| Good    |
-| Log In Page (user)  | No issues found| Good    |
-| Recipe Page (user)  | No issues found| Good    |
-| Recipe Page (user logged in) | No issues found     | Good |
-| Recipe Page (admin logged in) | No issues found     | Good |
-| Individual Recipecard (user) | No issues found     | Good |
-| Individual Recipecard (user logged in) | No issues found     | Good |
-| User Profile | No issues found     | Good |
-| Add New Recipe | No issues found    | Good |
-| Update Recipe (user's own recipe) | No issues found     | Good |
-| Update Recipe (admin user)| No issues found     | Good |
-| Delete Recipe (user's own recipe) | No issues found     | Good |
-| Delete Recipe (admin user) | No issues found     | Good |
-| Add to favourites | No issues found     | Good |
-| View favourites recipecard | ISSUE   | Good |
+| Page                  | Bugs           | 
+|---------------------- |----------------| 
+| Main Page (user)    | No issues found| 
+| Main Page (user logged in)  | No issues found| 
+| Register Page (user)  | No issues found| 
+| Log In Page (user)  | No issues found| 
+| Recipe Page (user)  | No issues found| 
+| Recipe Page (user logged in) | No issues found     | 
+| Recipe Page (admin logged in) | No issues found     |
+| Individual Recipecard (user) | No issues found     | 
+| Individual Recipecard (user logged in) | No issues found     | 
+| User Profile | No issues found     | 
+| Add New Recipe | No issues found    | 
+| Update Recipe (user's own recipe) | No issues found     | 
+| Update Recipe (admin user)| No issues found     | 
+| Delete Recipe (user's own recipe) | No issues found     |
+| Delete Recipe (admin user) | No issues found     | 
+| Add to favourites | No issues found     | 
+| View favourites recipecard | ISSUE FOUND  | 
 
 
 

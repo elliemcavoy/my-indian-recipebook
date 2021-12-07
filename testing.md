@@ -2,8 +2,10 @@
 
 <h3>Manual Testing of User Stories</h3>
 <ol>
-<li></li>
+<li>As a user, I want to be able to view all of the recipes and to be able to search for recipes containing a specific word.</li>
 <ul>
+<li>By comparing the live recipes.html page with the recipes collection in MongoDB, I can see that all recipes currently listed are being parsed onto the page. If the number of recipes exceeds 6, the remaining recipes will be added to a new page which is correct as per the pagination function. This allows users to see all recipes but ensures the amount of data on the page is not too overwhelming. </li>
+<li></li>
 <li>
 <img src=""></li>
 </ul>

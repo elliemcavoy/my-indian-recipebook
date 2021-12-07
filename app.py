@@ -20,9 +20,11 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
-RECIPES_PER_PAGE=2
+
 
 mongo = PyMongo(app)
+
+PAGINATION=
 
 @app.route("/")
 @app.route("/index")
@@ -150,7 +152,6 @@ def recipes():
     
 
 
-
 @app.route("/recipecard/<recipe>")
 def recipecard(recipe):
     recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
@@ -184,7 +185,7 @@ def delete_favourite(favourite):
 def search():
     query = request.form.get("query")
     recipes = mongo.db.recipes.find({"$text": {"$search": query}})
-    return render_template("recipes.html", recipes=recipes)
+    return render_template("recipes.html", recipes=recipes, pagination=pagination)
 
 @app.route("/add_favourites/<recipe>", methods=["GET", "POST"])
 def add_favourites(recipe):
