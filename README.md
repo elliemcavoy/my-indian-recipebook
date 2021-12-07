@@ -100,10 +100,24 @@ As a user of the website, the following actions and results would need to be ach
 </ul>
 <h4>Manual Testing</h4>
 I have carried out a lot of manual testing on different aspects of this project. Please see detailed manual testing logs <a href="testing.md"> here </a>.
+Please see below a brief overview of the testing carried out:
+| Page        | Bugs           | Status  |
+|:------------- |:-------------| :-----:|
+| Main Page(visitor)     | No issues found | Good |
+| Main Page(logged in)     | No issues found      | Good |
+| Recipe Page(visitor) | No issues found  | Good |
+| Recipe Page(logged in Visitor) | No issues found     | Good |
+| Recipe Page(logged in Author) | No issues found     | Good |
+| Registration Page | No issues found     | Good |
+| Login Page) | No issues found     | Good |
+| User Portal | No issues found     | Good |
+| Admin Portal | No issues found     | Good |
+| Create New Recipe | No issues found    | Good |
+| Update Recipe | No issues found     | Good |
+
 
 <h2 id="deployment"><u>Deployment</u></h2>
-Project has been deployed via Heroku and can be accessed here - .<br>
-The basic process for deployment was as follows: 
+This project has been deployed via Heroku and can be accessed here - .<br>
 
 If you would like to deploy this project for yourself please see below the steps I followed to deploy and you can do the same:
 <ol>
@@ -113,6 +127,7 @@ Create your new repository (I used GitHub) and then download or clone the follow
 <li>You will also need to create a cluster in MongoDB and a new collection. </li>
 <li>
 This site is currently deployed on Heroku using the master branch on GitHub. You can deploy this project remotely using the following steps:
+<h3>Deploying with Heroku</h3>
 <ol>
 <li>Firstly you need to create a requirements.txt file. This is used by Heroku to install all the required dependancies that are needed to run the application. To create the requirements.txt file you will need to enter the following into the terminal:
 
@@ -126,11 +141,15 @@ echo web: python run.py > Procfile
 
 
 You can view the Procfile for my project here: Procfile</li>
+
 <li>You will then need to sign up for a free Heroku account or, if you already have one, you will need to sign in. The link to create your account is: https://signup.heroku.com/ </li>
 
 <li>Once signed in to your Heroku account, you will need to create a new app ensuring you select the region closest to your location.</li>
+
 <li>You then need to choose your deployment method in the Deploy section. If you have created your repository using GitHub, you can connect to the specific repository by searching for the repo-name. If you cannot connect via GitHub, you can connect using Heroku Git (follow the instructions provided on Heroku).</li>
+
 <li>Once connected, you can 'Enable Automatice Deploys' so if you make any further changes and commits, it will automatically update and deploy a new version of the application.</li>
+
 <li>In Heroku click on the 'Settings' tab. In the Config Vars section, click on 'Reveal Config Vars' which is used to configure the environmental variables. You will need to set up your env.py file in order to complete this section. Setting up your env.py file can be done as follows:
 <ul>
 <li>Create a new file outside the folder structure called env.py.</li>
@@ -146,13 +165,15 @@ The MONGO_URI connection string can be found by doing the following in MongoDB:
 <ul>
 <li>Click on the 'Overview' tab</li>
 <li>Click on the 'Connect' option</li>
-<li>Seelect the 'Connect your application' option</li>
+<li>Select the 'Connect your application' option</li>
 <li>Select 'Python' as the driver</li>
 <li>You will then be provided with a connection string</li>
 <li>Paste the connection string into MONGO_URI variable</li>
 <li>Ensure you update the sections in capital letters with your own information e.g your password, your cluster name and your collection name: mongodb+srv://myRoot:MONGODB-PASSWORD@CLUSTER-NAME-96wib.mongodb.net/DATABASE-NAME?retryWrites=true&w=majority".</li></ul></li>
 </ul>
 </li>
+<li>Once your env.py file is created, go back to the Config Vars in Heroku and add the IP, PORT, SECRET_KEY, MONGO_URI & MONGO_DBNAME with the correct values as per your env.py file.</li>
+<li>Finally, go back to the 'Deploy' tab on Heroku and in the Manual Deploy section chose the 'main' branch and click 'Deploy Branch'. Once the application has been built, you will receive a message stating 'Your app was successfully deployed' with a link to view the app.</li>
 </ol>
 </li>
 
