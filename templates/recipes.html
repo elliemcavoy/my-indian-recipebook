@@ -39,8 +39,11 @@
               </div>
             </div>
             {% endfor %}
-          </div>    
+          </div>  
+          {% if pagination %}  
         <div class="row center-align page-links"> 
+
           {{ pagination.links }} 
         </div>  
+        {% endif %}
 {% endblock %}

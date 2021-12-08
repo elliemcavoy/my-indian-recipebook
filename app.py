@@ -24,7 +24,8 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-PAGINATION=
+PER_PAGE = 6
+
 
 @app.route("/")
 @app.route("/index")
@@ -135,6 +136,7 @@ def my_profile(username):
 
     return redirect(url_for("login"))
 
+
 #pagination implemented with help from: https://stackoverflow.com/questions/54053873/implementation-of-pagination-using-flask-paginate-pymongo
 @app.route("/recipes")
 def recipes():
@@ -143,13 +145,16 @@ def recipes():
     if q:
         search = True
     page = request.args.get(get_page_parameter(), type=int, default=1)
-    recipes=mongo.db.recipes.find()
-    per_page=6
-    allrecipe = mongo.db.recipes.find().skip((page - 1) * per_page).limit(per_page)
-    
-    pagination = Pagination(page=page,per_page=6 ,total=allrecipe.count(), search=search, record_name='allpost')      
+    allrecipe = mongo.db.recipes.find().skip((page - 1) * PER_PAGE).limit(PER_PAGE)
+    pagination = Pagination(page=page,per_page=6 ,total=allrecipe.count(), search=search, record_name='allpost')
     return render_template('recipes.html', recipes=allrecipe, pagination=pagination)
-    
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    recipes = mongo.db.recipes.find({"$text": {"$search": query}})
+    return render_template("recipes.html", recipes=recipes)
 
 
 @app.route("/recipecard/<recipe>")
@@ -179,13 +184,6 @@ def delete_favourite(favourite):
     favourites=mongo.db.favourites.find({"added_by": session["user"]})
     return render_template("my_profile.html", username=username, my_recipes=my_recipes, favourites=favourites)
     
-
-
-@app.route("/search", methods=["GET", "POST"])
-def search():
-    query = request.form.get("query")
-    recipes = mongo.db.recipes.find({"$text": {"$search": query}})
-    return render_template("recipes.html", recipes=recipes, pagination=pagination)
 
 @app.route("/add_favourites/<recipe>", methods=["GET", "POST"])
 def add_favourites(recipe):
