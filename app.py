@@ -39,8 +39,8 @@ def index():
         counter1=Counter(x)
         votes=dict(counter1.most_common(3))
 
-    print(x)
-    print(votes)
+    #print(x)
+    #print(votes)
     
     return render_template("index.html", results=results, votes=votes)
 

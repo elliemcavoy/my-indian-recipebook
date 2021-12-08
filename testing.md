@@ -5,31 +5,56 @@
 <li>As a user, I want to be able to view all of the recipes and to be able to search for recipes containing a specific word.</li>
 <ul>
 <li>By comparing the live recipes.html page with the recipes collection in MongoDB, I can see that all recipes currently listed are being parsed onto the page. If the number of recipes exceeds 6, the remaining recipes will be added to a new page which is correct as per the pagination function. This allows users to see all recipes but ensures the amount of data on the page is not too overwhelming. </li>
-<li></li>
-<li>
-<img src=""></li>
-</ul>
-<li></li>
+<li>By typing a keyword or name into the search bar, and clicking 'Search', a list of all recipes containing the above mentioned word is generated. Clicking the 'reset' button just brings back a list of all recipes.</li>
+<li>A few issues were uncovered while testing this section. These are detailed below with the fixes that were applied:
 <ul>
-<li>
-<img src=""></li>
-</ul>
-<li> </li>
+<li>When searching for a keyword using the 'search' button, a error was being presented as 'pagination' was only defined in the 'recipes' function and not the 'search' function despite them both rendering the same html template. As the pagination was not required when displaying the search results, I removed this variable from the 'search' functions render_template call. I also added an if statement on the html template to only show the pagination links when called through the 'recipes' function otherwise an error was still present after the search.</li>
+<li>If no results were found when a search was conducted, there was no message to advise that this was the case.</li>
+</ul></ul>
+<li>As a user, I want to be able to see the top three rated recipes at any given time.
+</li>
 <ul>
-<li>
-<img src=""></li>
+<li>By scrolling to the bottom of the index.html page, I can see the Leaderboard displayed.</li>
+<li>To test that it is correctly displaying the current favourite recipes, I chose recipes that were not currently displayed and upvoted them numerous times. Going back to the index.html page I as able to see that the leaderboard had changed to reflect the newly upvoted recipes.</li>
+</ul>
+<li>As a user, I want to be able to see the type of dish, ingredients, method and time to make the recipe.</li>
+<ul>
+<li>Navigating to the recipes page, I am able to click on either the recipe name or the view button to display the recipecard for each recipe.</li>
+<li>Once the recipecard is displayed, the type of recipe and time to make are already displayed. In order to see the ingredients and method in more details, I just need to click on the link for each collapsible and these details are displayed.</li>
+</ul>
+<li>As a user, I want to ability to create a profile by entering a username and password.</li>
+<ul>
+<li>By clicking on the 'register' link visible from the homepage, I am able to enter a username and password of my choice (minimum number of characters must be met).</li>
+<li>By checking my MongoDB collection 'users' I am then able to see that this user and hashed password have been added.</li>
+</ul>
+<li>As a registered user, I want the ability to log in and log out of my account.</li>
+<ul>
+<li>I tested this using a previously created account. After clicking on the 'Log In' link and inputting the username and password I recieved a message to welcome me to my profile. Once logged in I was able to see more links such as 'add recipe' and 'my profile'. </li>
+<li>The 'Log Out' link was also now visible and clicking this successfully ended the session and a message was displayed advising I had been logged out. The additional links are no longer visible.</li>
 </ul> 
-<li></li>
+<li>As a registered user, I want to be able add recipes so that other user can view them.</li>
+<ul>
+<li>Once logged in, I am able to click on the 'Add Recipe' link in the navbar. A form is displayed allowing me to input details for the new recipes.</li>
+<li>The meal type option is displayed as a drop down as there are only 4 categories that can be chosen.</li>
+<li>The time has to be input in a specfic format to ensure it is then parsed correctly from the database.</li>
+<li>The other form input are just text inputs. All of the form items are mandatory apart from the recipe image URL.</li>
+<li>Once I have entered all of the required fields, clicking the submit button then displays a message to advise the recipe has been added.</li>
+<li>Upon checking the MongoDB collection - recipes - I can see that the recipe has been added with all of the correct information. As I didn't enter an image URL, the generic image I set up was inputted instead which is the result I was expecting. This means that when parsed, an image will still be displayed.</li>
+</ul>
+<li>As a registered user, I want to be able to see all of my recipes via my Profile and have the ability to edit & delete them if required.</li>
 <ul>
 <li>
-<img src=""></li>
+</li>
 </ul>
-<li></li>
+<li>As a registered user, I want to be able to add other user's recipes to 'My Favourites' and have easy access to them through my Profile.</li>
 <ul>
-<li>
-<img src=""></li>
-</ul>
 <li></li>
+</ul>
+<li>As a registered user, I want to be able to vote (upvote or downvote) on other user's recipes.</li>
+<ul>
+<li></li>
+</ul>
+<li>As the admin user, I want to be able to remove and edit any recipe regardless of which user added it to the application.</li>
 <ul>
 <li></li>
 </ul>
@@ -61,9 +86,13 @@ I manually tested the following to make sure they worked as designed:
 <h3>Bugs Discovered</h3>
 Here are details of bugs that were discovered during manual testing and how they were rectified.
 
-<ul>
-</ul>
+<ol>
+<li>The pagination on the recipes.html page was causing an error when a search was carried out.</li>
+<li>The leaderboard function was generating a list which could not be counted using the Counter method.</li>
+<li>When the ingredients were being parsed onto the recipecard, they were just being displayed as a log list without any breaks between them.</li>
+<li>A responsive design issue was discovered when the application was displayed on a smaller screen. The font size of the main heading in the navbar was too large on smaller screens meaning the full heading could not be seen. </li>
+</ol>
 
 <h3>Bugs still to be rectified</h3>
 <ul>
-<li></li>
+<li>Favourites recipecard is not correctly spliting the ingredients and method information as it does in the original recipecard.</li>

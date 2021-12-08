@@ -45,6 +45,7 @@ As a user of the website, the following actions and results would need to be ach
 <li>As a user, I want to be able to see the top three rated recipes at any given time.</li>
 <li>As a user, I want to be able to see the type of dish, ingredients, method and time to make the recipe.</li>
 <li>As a user, I want to ability to create a profile by entering a username and password.</li>
+<li>As a registered user, I want the ability to log in and log out of my account.</li>
 <li>As a registered user, I want to be able add recipes so that other user can view them. </li>
 <li>As a registered user, I want to be able to see all of my recipes via my Profile and have the ability to edit & delete them if required.</li>
 <li>As a registered user, I want to be able to add other user's recipes to 'My Favourites' and have easy access to them through my Profile.</li>
@@ -74,6 +75,10 @@ As a user of the website, the following actions and results would need to be ach
 </ol>
 
 <h4 id="new-features">Features Left to Implement</h4>
+<ol>
+<li>I would ideally like to connect to a supermarket API which is could then link to the ingredients from each recipe to display the prices of these items and give users the option to purchase them from the recipecard page.</li>
+<li>I think that it would also be beneficial to incorporate a relational database so that a user's favourites & recipes could be stored against that users account. It would also be helpful to allocate each dish with the number of upvotes & downvotes rather than pulling all of the dish names from the votes collection in MongoDB. This is because as the collection grows in size it will take longer to pull all the data required to generate the leaderboard values.</li>
+</ol>
 
 
 <h2 id="technologies"><u>Technologies Used</u></h2>
@@ -101,17 +106,17 @@ As a user of the website, the following actions and results would need to be ach
 
 <h4>Manual Testing</h4>
 I have carried out a lot of manual testing on different aspects of this project. Please see detailed manual testing logs <a href="testing.md"> here </a>.
-Please see below a brief overview of the testing carried out. Any issues found are documented in the testing log.
+Please see below a brief overview of the testing carried out. Any issues found and fixes put in place are documented in the testing log.
 
-| Page                  | Bugs           | 
-|---------------------- |----------------| 
+| Page                  | Bug Detected   | Bug fixed Y/N |
+|---------------------- |----------------| --------------|
 | Main Page (user)    | No issues found| 
 | Main Page (user logged in)  | No issues found| 
 | Register Page (user)  | No issues found| 
 | Log In Page (user)  | No issues found| 
-| Recipe Page (user)  | No issues found| 
-| Recipe Page (user logged in) | No issues found     | 
-| Recipe Page (admin logged in) | No issues found     |
+| Recipe Page (user)  | ISSUE FOUND| Y
+| Recipe Page (user logged in) | ISSUE FOUND    | Y
+| Recipe Page (admin logged in) | ISSUE FOUND     | Y
 | Individual Recipecard (user) | No issues found     | 
 | Individual Recipecard (user logged in) | No issues found     | 
 | User Profile | No issues found     | 
@@ -121,7 +126,7 @@ Please see below a brief overview of the testing carried out. Any issues found a
 | Delete Recipe (user's own recipe) | No issues found     |
 | Delete Recipe (admin user) | No issues found     | 
 | Add to favourites | No issues found     | 
-| View favourites recipecard | ISSUE FOUND  | 
+| View favourites recipecard | ISSUE FOUND  | N
 
 
 
