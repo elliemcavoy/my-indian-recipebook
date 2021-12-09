@@ -15,6 +15,7 @@
 <li><a href="typography">Typography</a></li>
 </ul>
 </ul>
+<li><a href="#database">Database</a></li>
 <li><a href="#features">Features</a></li>
 <ul>
 <li><a href="#existing-features">Existing Features</a></li>
@@ -25,20 +26,20 @@
 <li><a href="#deployment">Deployment</a></li>
 <li><a href="#credits">Credits</a></li>
 </ol>
-<h2 id="ux"><u>UX</u></h2>
+<h1 id="ux"><u>UX</u></h1>
 This web based application's primary purpose is to allow the sharing of recipes. The recipes will be available to browse by any visitor to the website. However, additional functionality will be made available for user's that register on the site. A search functionality will provide any visitors the ability to search for recipes by a keyword such as an ingredient or name. Registering on the site will allow users to, once logged in, edit and delete their own recipes. It will also allow them to add other user's recipes to their favourite's list which will then be stored in their profile and be readily available for them to view. A leaderboard on the main page will also allow visitors to see the current most voted for recipes.
 
-<h4 id="wireframes">Wireframes</h4>
+<h2 id="wireframes">Wireframes</h2>
 Please see the wireframes for this project:<br>
 <a href="" target="_blank">Desktop</a><br>
 <a href="" target="_blank">Mobile</a>
 
-<h4 id="target-audience">Target Audience</h4>
+<h2 id="target-audience">Target Audience</h2>
 <ul>
 <li>The audience that this application will be aimed at will be avid home cooks who have a particular interest in Indian Cuisine. </li>
 </ul>
 
-<h4 id="user-stories">User Stories</h4>
+<h2 id="user-stories">User Stories</h2>
 As a user of the website, the following actions and results would need to be achieved:
 <ol>
 <li>As a user, I want to be able to view all of the recipes and to be able to search for recipes containing a specific word.</li>
@@ -52,15 +53,72 @@ As a user of the website, the following actions and results would need to be ach
 <li>As a registered user, I want to be able to vote (upvote or downvote) on other user's recipes.</li>
 <li>As the admin user, I want to be able to remove and edit any recipe regardless of which user added it to the application.</li></ol>
 
-<h5 id="typography">Typography</h5>
+
+
+<h4 id="typography">Typography</h4>
 2 Google Fonts were used in this project:
 <ol>
 <li>Delius Unicase - Logo</li>
 <li>Arima Madurai - Main Body text & headings </li>
 </ol>
 
+<h1 id="database"><u>Database</u></h1>
+For this project, there will be 5 collections in the MongoDB database that I have created called 'recipebook'. The tables below show the structure and items in each of the collections.
 
-<h4 id="existing-features">Existing Features</h4>
+<h3><u>Users</u></h3>
+
+| Key                | Value          | 
+|--------------------|----------------|
+|_id | Object Id (automatically generated to be unique)|
+|username| Username decided by user|
+|password| Password chosen by user that has been hashed|
+
+<h3><u>Recipes</u></h3>
+
+| Key                | Value          | 
+|--------------------|----------------|
+|_id | Object Id (automatically generated to be unique)|
+|name| Recipe Name|
+|ingredients| Recipe ingredients|
+|method| Method to create dish|
+|time| Time to create recipe|
+|meal_type_name| Starter, Main, Side or Dessert|
+|image| URL for image of finished dish|
+|created_by|username of the user who added recipe|
+
+<h3><u>Meal_type</u></h3>
+This collection is limited to 4 entries which are: Starter, Meain Course, Side Dish and Dessert. The collection cannot be added to or changed apart from manually through MongoDB.
+
+| Key                | Value          | 
+|--------------------|----------------|
+|_id | Object Id (automatically generated to be unique)|
+|meal_type_name| Type of dish|
+
+<h3><u>Vote</u></h3>
+
+| Key                | Value          | 
+|--------------------|----------------|
+|_id | Object Id (automatically generated to be unique)|
+|vote| An array which is either upvote or downvote|
+|recipe_name|Name of dish that has been voted|
+|added_by|Username of user who is voting|
+
+<h3><u>Favourites</u></h3>
+
+| Key                | Value          | 
+|--------------------|----------------|
+|_id | Object Id (automatically generated to be unique)|
+|meal_type_name| Type of dish|
+|name|Recipe Name|
+|ingredients| Ingredients for selected recipe|
+|method| Method for selected recipe|
+|image| URL for image of dish|
+|added_by| Username of user who added to favourites|
+
+
+<h1 id="#features"><u>Features</u></h1>
+
+<h2 id="existing-features"><u>Existing Features</u></h2>
 <ol>
 <li>NAVIGATION</li>
 <li>VIEW RECIPES</li>
@@ -74,14 +132,14 @@ As a user of the website, the following actions and results would need to be ach
 <li>LEADERBOARD</li>
 </ol>
 
-<h4 id="new-features">Features Left to Implement</h4>
+<h2 id="new-features"><u>Features Left to Implement</u></h2>
 <ol>
 <li>I would ideally like to connect to a supermarket API which is could then link to the ingredients from each recipe to display the prices of these items and give users the option to purchase them from the recipecard page.</li>
 <li>I think that it would also be beneficial to incorporate a relational database so that a user's favourites & recipes could be stored against that users account. It would also be helpful to allocate each dish with the number of upvotes & downvotes rather than pulling all of the dish names from the votes collection in MongoDB. This is because as the collection grows in size it will take longer to pull all the data required to generate the leaderboard values.</li>
 </ol>
 
 
-<h2 id="technologies"><u>Technologies Used</u></h2>
+<h1 id="technologies"><u>Technologies Used</u></h1>
 <ul>
 <li>HTML5</li>
 <li>CSS3 </li>
@@ -97,7 +155,7 @@ As a user of the website, the following actions and results would need to be ach
 <li><a href="https://fonts.google.com/">Google Fonts</a> - Used to create a look in keeping with the website aim and to create uniform styling throughout.</li>
 </ul>
 
-<h2 id="testing"><u>Testing</u></h2>
+<h1 id="testing"><u>Testing</u></h1>
 <h4>Validators</h4>
 <ul>
 <li>W3C HTML Validator</li>
@@ -130,7 +188,7 @@ Please see below a brief overview of the testing carried out. Any issues found a
 
 
 
-<h2 id="deployment"><u>Deployment</u></h2>
+<h1 id="deployment"><u>Deployment</u></h1>
 This project has been deployed via Heroku and can be accessed here - .<br>
 
 If you would like to deploy this project for yourself please see below the steps I followed to deploy and you can do the same:
