@@ -2,90 +2,93 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-        type="text/css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-    {% block styles %}
-    {% endblock %}
-    <title>Indian Recipebook</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    type="text/css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+  {% block styles %}
+  {% endblock %}
+  <title>Indian Recipebook</title>
 </head>
+
 <body>
-    <header>
-        <nav>
-            <div class="nav-wrapper">
-              <a href="#!" class="brand-logo text-shadow" id="brand-logo">My Indian Recipebook</a>
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
-              <ul class="right hide-on-med-and-down">
-                <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
-                {% if session.user %}
-                <li><a href="{{ url_for('my_profile', username=session['user']) }}">My Profile</a></li>
-                <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                {% else %}
-                <li><a href="{{ url_for('login') }}">Log In</a></li>
-                <li><a href="{{ url_for('register') }}">Register</a></li>
-                {% endif %}
-              </ul>
-            </div>
-          </nav>
-        
-          <ul class="sidenav" id="mobile-demo">
-            <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
-                {% if session.user %}
-                <li><a href="{{ url_for('my_profile', username=session['user']) }}">My Profile</a></li>
-                <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                {% else %}
-                <li><a href="{{ url_for('login') }}">Log In</a></li>
-                <li><a href="{{ url_for('register') }}">Register</a></li>
-                {% endif %}
-          </ul>
-    </header>
-    <section>
-      <!-- flash messages -->
-      {% with messages = get_flashed_messages() %}
-                  {% if messages %}
-                  {% for message in messages %}
-                  <div class="row">
-                    <div class="col s12 m6 offset-m3 flashes ">
-                      <h4 class="center-align">{{ message }}</h4>
-                    </div>
-                  </div>
-                  {% endfor %}
-                  {% endif %}
-                  {% endwith %}
-      </section>
-    <main>
-      {% block content %}
-      {% endblock %}
-    </main>
-
-
-    
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
-    </script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-        {% block scripts %}
-        {% endblock %}
-</body>
-<footer class="page-footer">
-  
+  <header>
+    <!-- navbar -->
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo text-shadow" id="brand-logo">My Indian Recipebook</a>
+        <!-- sidenav link -->
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+        <!-- menu links -->
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
+          {% if session.user %}
+          <li><a href="{{ url_for('my_profile', username=session['user']) }}">My Profile</a></li>
+          <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
+          <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          {% else %}
+          <li><a href="{{ url_for('login') }}">Log In</a></li>
+          <li><a href="{{ url_for('register') }}">Register</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <!-- sidenav menu links -->
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="{{ url_for('index') }}">Home</a></li>
+      <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
+      {% if session.user %}
+      <li><a href="{{ url_for('my_profile', username=session['user']) }}">My Profile</a></li>
+      <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
+      <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+      {% else %}
+      <li><a href="{{ url_for('login') }}">Log In</a></li>
+      <li><a href="{{ url_for('register') }}">Register</a></li>
+      {% endif %}
+    </ul>
+  </header>
+  <section>
+    <!-- flash messages -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="row">
+      <div class="col s12 m6 offset-m3 flashes ">
+        <h4 class="center-align">{{ message }}</h4>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+  </section>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+  <!-- footer -->
+  <footer class="page-footer">
     <div class="container footer-container">
-    © 2014 Copyright Text
-    
-    
-  </div>
-</footer>
+      © 2021 Copyright Text
+    </div>
+  </footer>
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
+  </script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  {% block scripts %}
+  {% endblock %}
+</body>
+
 
 </html>

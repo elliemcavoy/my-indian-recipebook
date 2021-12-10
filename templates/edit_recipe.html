@@ -4,73 +4,77 @@
     <h2 class="center-align heading">Edit Recipe</h2>
 
     <div class="row">
+        <!-- Edit recipe form -->
         <div class="col s8 offset-s2 card-panel">
-        <form class="info-form" method="POST" action="{{ url_for('edit_recipe', recipe=recipe._id) }}">
-            <div class="row">
-				<div class="input-field col s12">
-                    <i class="fas fa-utensils prefix form-icon"></i>
-					<select id="meal_type_name" name="meal_type_name" class="validate" required>
-                        <option value="" disabled selected>Choose Meal Type</option>
-                        {% for meal in meal_type %}
+            <form class="info-form" method="POST" action="{{ url_for('edit_recipe', recipe=recipe._id) }}">
+                <!-- meal type dropdown selector -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-utensils prefix form-icon"></i>
+                        <select id="meal_type_name" name="meal_type_name" class="validate" required>
+                            <option value="" disabled selected>Choose Meal Type</option>
+                            {% for meal in meal_type %}
                             <option value="{{ meal.meal_type_name }}">{{ meal.meal_type_name }}</option>
-                        {% endfor %}
-                    </select>
-					<label for="meal_type_name">Meal Type</label>
-				</div>
-			</div>
-            
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-pencil-alt prefix form-icon"></i>
-                    <input id="name" name="name" minlength="5" maxlength="50"
-                        type="text" class="validate" required>
-                    <label for="name">Dish Name</label>
+                            {% endfor %}
+                        </select>
+                        <label for="meal_type_name">Meal Type</label>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-clipboard-list prefix form-icon"></i>
-                    <textarea id="ingredients" name="ingredients" minlength="5"
-                        maxlength="200" class="materialize-textarea validate" required></textarea>
-                    <label for="ingredients">Ingredients</label>
+                <!-- dish name -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-pencil-alt prefix form-icon"></i>
+                        <input id="name" name="name" minlength="5" maxlength="50" type="text" class="validate" required>
+                        <label for="name">Dish Name</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-book-open prefix form-icon"></i>
-                    <textarea id="method" name="method" minlength="5"
-                        maxlength="200" class="materialize-textarea validate" required></textarea>
-                    <label for="method">Method</label>
+                <!-- ingredients -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-clipboard-list prefix form-icon"></i>
+                        <textarea id="ingredients" name="ingredients" minlength="5" maxlength="200"
+                            class="materialize-textarea validate" required></textarea>
+                        <label for="ingredients">Ingredients</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-clock prefix form-icon"></i>
-                    <input type="time" id="time" name="time" minlength="2"
-                        maxlength="15" class="materialize-textarea validate" required>
-                    <label for="time">Time to make recipe (hh:mm)</label>
+                <!-- method -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-book-open prefix form-icon"></i>
+                        <textarea id="method" name="method" minlength="5" maxlength="200"
+                            class="materialize-textarea validate" required></textarea>
+                        <label for="method">Method</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-image prefix form-icon"></i>
-                    <textarea id="image" name="image" minlength="20"
-                        maxlength="500" class="materialize-textarea validate" required></textarea>
-                    <label for="image">Image (please enter URL for your image)</label>
+                <!-- time -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-clock prefix form-icon"></i>
+                        <input type="time" id="time" name="time" minlength="2" maxlength="15"
+                            class="materialize-textarea validate" required>
+                        <label for="time">Time to make recipe (hh:mm)</label>
+                    </div>
                 </div>
-            </div>
-			
-            <!-- submit button -->
-            <div class="row">
-                <div class="col s12 center-align">
-                    <button class="btn-large buttons">
-                        Submit Changes<i class="fas fa-plus-square right"></i>
-                    </button>
+                <!-- image URL -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-image prefix form-icon"></i>
+                        <textarea id="image" name="image" minlength="20" maxlength="500"
+                            class="materialize-textarea validate" required></textarea>
+                        <label for="image">Image (please enter URL for your image)</label>
+                    </div>
                 </div>
-            </div>
-        </form>
-    </div>
+
+                <!-- submit button -->
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <button class="btn-large buttons">
+                            Submit Changes<i class="fas fa-plus-square right"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
     {% endblock %}

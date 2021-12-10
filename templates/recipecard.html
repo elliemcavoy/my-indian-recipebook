@@ -2,41 +2,44 @@
 {% block content %}
 <h2 class="center-align heading">{{ recipe.name }}</h2>
 <div class="center-align">
-  <form method="POST" action = "{{ url_for('add_favourites', recipe=recipe._id) }}">
-  <button class="btn-small buttons"><i class="fas fa-heart"></i> Add to favourites</button>
+  <!-- Add to favourites button -->
+  <form method="POST" action="{{ url_for('add_favourites', recipe=recipe._id) }}">
+    <button class="btn-small buttons"><i class="fas fa-heart"></i> Add to favourites</button>
   </form>
+</div>
+<!-- Recipe details -->
+<div class="row">
+  <div class="col s10 offset-s1">
+    <ul class="collapsible page-text">
+      <li>
+        <div class="collapsible-header"><i class="fas fa-utensils"></i>{{ recipe.meal_type_name }}</div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="fas fa-clock"></i>{{ recipe.time }}</div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="fas fa-clipboard-list"></i>Ingredients <i
+            class="fas fa-arrow-down"></i></div>
+        {% for ingredient in ingredients %}
+        <div class="collapsible-body"><span>{{ ingredient }}</span></div>
+        {% endfor %}
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="fas fa-book-open"></i>Method <i class="fas fa-arrow-down"></i></div>
+        {% for item in method %}
+        <div class="collapsible-body"><span>{{ item }}</span></div>
+        {% endfor %}
+      </li>
+    </ul>
   </div>
-  <div class="row">
-    <div class="col s10 offset-s1">
-  <ul class="collapsible page-text">
-    <li>
-      <div class="collapsible-header"><i class="fas fa-utensils"></i>{{ recipe.meal_type_name }}</div>
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="fas fa-clock"></i>{{ recipe.time }}</div>
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="fas fa-clipboard-list"></i>Ingredients <i class="fas fa-arrow-down"></i></div>
-      {% for ingredient in ingredients %}
-      <div class="collapsible-body"><span>{{ ingredient }}</span></div>
-      {% endfor %}
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="fas fa-book-open"></i>Method <i class="fas fa-arrow-down"></i></div>
-      {% for item in method %}
-      <div class="collapsible-body"><span>{{ item }}</span></div>
-      {% endfor %}
-    </li>
-    
-  </ul>
-  </div>
-  </div>
-  {% if session.user %}
-  <div class="center-align">
-    <p>
-      Enjoyed this recipe?
-    </p>
-    <form method="POST" action="{{ url_for('voting', recipe=recipe._id)}}">
+</div>
+<!-- voting buttons - only visible to logged in user -->
+{% if session.user %}
+<div class="center-align">
+  <p>
+    Enjoyed this recipe?
+  </p>
+  <form method="POST" action="{{ url_for('voting', recipe=recipe._id)}}">
     <p>
       <label>
         <input class="with-gap" name="vote" id="upvote" value="upvote" type="radio" checked />
@@ -51,8 +54,8 @@
     </p>
     <button type="submit" class="btn-large">
       Vote
-  </button>
+    </button>
   </form>
-  </div>
-  {% endif %}
+</div>
+{% endif %}
 {% endblock %}
