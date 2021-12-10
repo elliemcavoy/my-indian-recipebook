@@ -15,17 +15,13 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 
-
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
-
-
 mongo = PyMongo(app)
 
 PER_PAGE = 6
-
 
 @app.route("/")
 @app.route("/index")
@@ -33,17 +29,12 @@ def index():
     x=[]
     results=mongo.db.vote.find({"vote": "upvote"})
     for item in results:
-        
         recipe_name=item.get('recipe_name')
         x.append(recipe_name)
         counter1=Counter(x)
         votes=dict(counter1.most_common(3))
-
-    #print(x)
-    #print(votes)
     
     return render_template("index.html", results=results, votes=votes)
-
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -61,7 +52,6 @@ def register():
             "password": generate_password_hash(request.form.get("password"))
         }
         mongo.db.users.insert_one(register)
-        
         session["user"] = request.form.get("username").lower()
         flash("Thank You for Registering")
 
@@ -103,12 +93,10 @@ def logout():
 
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
-    
     if request.method == "POST":
         image=request.form.get("image")
         if len(image) == 0:
             image=("https://media.istockphoto.com/vectors/fork-knife-icon-vector-id468611140?k=20&m=468611140&s=170667a&w=0&h=vv4BkhlRA35rC-CkIvRBf-r4X9kcFSEQGnzNiJOFH5s=")
-
         recipe = {
             "meal_type_name": request.form.get("meal_type_name"),
             "name": request.form.get("name"),
@@ -118,13 +106,12 @@ def add_recipe():
             "time": request.form.get("time"),
             "created_by": session["user"]
         }
-        
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe Added")
-        
     meal_type = mongo.db.meal_type.find().sort("meal_type_name")
     return render_template("add_recipe.html", meal_type=meal_type)
-    
+
+
 @app.route("/my_profile/<username>", methods=["GET", "POST"])
 def my_profile(username):
     username = mongo.db.users.find_one(
@@ -132,8 +119,9 @@ def my_profile(username):
     if session["user"]:
         my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
         favourites=mongo.db.favourites.find({"added_by": session["user"]})
-        return render_template("my_profile.html", username=username, my_recipes=my_recipes, favourites=favourites)
-
+        return render_template("my_profile.html", username=username, 
+                                my_recipes=my_recipes, favourites=favourites)
+    
     return redirect(url_for("login"))
 
 
@@ -144,6 +132,7 @@ def recipes():
     q = request.args.get('q')
     if q:
         search = True
+
     page = request.args.get(get_page_parameter(), type=int, default=1)
     allrecipe = mongo.db.recipes.find().skip((page - 1) * PER_PAGE).limit(PER_PAGE)
     pagination = Pagination(page=page,per_page=6 ,total=allrecipe.count(), search=search, record_name='allpost')
@@ -163,15 +152,19 @@ def recipecard(recipe):
     method=recipe.get("method").split(".")
     ingredients=recipe.get("ingredients").split(",")
     time=recipe.get("time")
-    return render_template("recipecard.html", recipe=recipe, method=method, ingredients=ingredients, time=time)
+    return render_template("recipecard.html", recipe=recipe, 
+                            method=method, ingredients=ingredients, 
+                            time=time)
+
 
 @app.route("/favourite_recipecard/<favourite>")
 def favourite_recipecard(favourite):
     favourite=mongo.db.favourites.find_one({"_id": ObjectId(favourite)})
     method=favourite.get("method").split(".")
     ingredients=favourite.get("ingredients").split(",")
-
-    return render_template("favourite_recipecard.html", favourite=favourite, method=method, ingredients=ingredients)
+    return render_template("favourite_recipecard.html", 
+                            favourite=favourite, method=method, 
+                            ingredients=ingredients)
 
 
 @app.route("/delete_favourite/<favourite>")
@@ -182,7 +175,8 @@ def delete_favourite(favourite):
         {"username": session["user"]})["username"]
     my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
     favourites=mongo.db.favourites.find({"added_by": session["user"]})
-    return render_template("my_profile.html", username=username, my_recipes=my_recipes, favourites=favourites)
+    return render_template("my_profile.html", username=username, 
+                            my_recipes=my_recipes, favourites=favourites)
     
 
 @app.route("/add_favourites/<recipe>", methods=["GET", "POST"])
@@ -207,8 +201,9 @@ def add_favourites(recipe):
         }
         mongo.db.favourites.insert_one(favourite)
         flash("Recipe Added to Favourite")
+
     return render_template("recipecard.html", recipe=recipe)
-    
+ 
 
 @app.route("/delete_recipe/<recipe>")
 def delete_recipe(recipe):
@@ -234,7 +229,9 @@ def edit_recipe(recipe):
         }
         mongo.db.recipes.update({"_id": ObjectId(recipe)}, submit)
         flash("Recipe Updated")
+
     return render_template("edit_recipe.html", recipe=recipe, meal_type=meal_type)
+
 
 @app.route("/voting/<recipe>", methods=["GET", "POST"])
 def voting(recipe):
@@ -250,8 +247,6 @@ def voting(recipe):
         mongo.db.vote.insert_one(votes)
         flash("Thank you for voting")
         return render_template("recipecard.html", recipe=recipe, method=method)
-
-
 
 
 if __name__ == "__main__":
