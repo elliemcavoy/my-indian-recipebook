@@ -1,32 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
 <section class="main-image">
-		
-    <div class="row" id="logo-container">
-      <div class="col s12" id="logo">
-                <img src="static/images/hero-img.jpg">
-      </div>
-      
-      <div id="bubble" class="col s4"><span>
-        <p>A place to share all your spicy dishes! <br>Add and share your own recipes or find delicious recipes from fellow chefs.
-                </p>
-            </span>
-      </div>
+  <!-- hero image -->
+  <div class="row" id="logo-container">
+    <div class="col s12" id="logo">
+      <img src="static/images/hero-img.jpg">
     </div>
-  </section>
-  <section>
-
-<div class="row center-align page-text">
-  <h2 class="heading">Recipe Leaderboard</h2>
-  <p>Our top rated recipes are:</p>
-  {% for vote in votes %}
+    <!-- floating bubble with text -->
+    <div id="bubble" class="col s4"><span>
+        <p>A place to share all your spicy dishes! <br>Add and share your own recipes or find delicious recipes from
+          fellow chefs.
+        </p>
+      </span>
+    </div>
+  </div>
+</section>
+<section>
+  <!-- recipes leaderboard -->
+  <div class="row center-align page-text">
+    <h2 class="heading">Recipe Leaderboard</h2>
+    <p>Our top rated recipes are:</p>
+    {% for vote in votes %}
     <div class="col s12 center-align">
       <i class="fas fa-trophy"></i>
-       {{vote}}
+      {{vote}}
       <i class="fas fa-trophy"></i>
     </div>
-  {% endfor %}
-</div>
+    {% endfor %}
+  </div>
 </section>
 
 {% endblock %}

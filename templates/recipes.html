@@ -1,49 +1,56 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2 class = "center-align heading">Recipes</h2>
+<h2 class="center-align heading">Recipes</h2>
 <div class="row card-panel grey lighten-5">
+  <!-- recipes search -->
   <form action="{{ url_for('search') }}" method="post" class="col s12">
-      <div class="row valign-wrapper center-align">
-          <div class="input-field col s12 m8 search">
-              <i class="fas fa-search prefix"></i>
-              <input type="text" name="query" id="query" minlength="3" class="validate" required>
-              <label for="query">Search Recipes</label>
-          </div>
-          <div class="col s12 m4">
-              <a href="{{ url_for('recipes') }}" class="btn grey-btn">Reset</a>
-              <button type="submit" class="btn orange-btn">
-                  <i class="fas fa-search left"></i> Search
-              </button>
-          </div>
+    <div class="row valign-wrapper center-align">
+      <div class="input-field col s12 m8 search">
+        <i class="fas fa-search prefix"></i>
+        <input type="text" name="query" id="query" minlength="3" class="validate" required>
+        <label for="query">Search Recipes</label>
       </div>
+      <div class="col s12 m4">
+        <!-- reset button -->
+        <a href="{{ url_for('recipes') }}" class="btn grey-btn">Reset</a>
+        <!-- search button -->
+        <button type="submit" class="btn orange-btn">
+          <i class="fas fa-search left"></i> Search
+        </button>
+      </div>
+    </div>
   </form>
 </div>
-    
-    
-        <div class="row">
-          {% for recipe in recipes %}
-            <div class="col s12 m6 l4 inline-block page-text">
-              <div class="card">
-                <div class="card-image images">
-                  <img src="{{ recipe.image }}">
-                  <a class="btn-floating btn-large halfway-fab buttons" href="{{ url_for('recipecard', recipe=recipe._id) }}"> View Recipe</a>
-                </div>
-                <div class="card-content center-align">
-                  <span class="card-title"><a href="{{ url_for('recipecard', recipe=recipe._id) }}" class="page-text-link">{{ recipe.name }}</a> </span>
-                  {% if session.user|lower == "admin"|lower %}
-                  <a href="{{ url_for ('edit_recipe',recipe=recipe._id) }}" class="btn orange-btn">Edit</a>
-                  <a href="{{ url_for ('delete_recipe',recipe=recipe._id) }}" class="btn grey-btn">Delete</a>
-                {% endif %}
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-          </div>  
-          {% if pagination %}  
-        <div class="row center-align page-links"> 
-
-          {{ pagination.links }} 
-        </div>  
+<div class="row">
+  {% for recipe in recipes %}
+  <div class="col s12 m6 l4 inline-block page-text">
+    <!-- recipe card-->
+    <div class="card">
+      <div class="card-image images">
+        <img src="{{ recipe.image }}">
+        <!-- view recipe link -->
+        <a class="btn-floating btn-large halfway-fab buttons" href="{{ url_for('recipecard', recipe=recipe._id) }}">
+          View Recipe</a>
+      </div>
+      <div class="card-content center-align">
+        <span class="card-title"><a href="{{ url_for('recipecard', recipe=recipe._id) }}"
+            class="page-text-link">{{ recipe.name }}</a> </span>
+        <!-- buttons only visible to admin user -->
+        {% if session.user|lower == "admin"|lower %}
+        <a href="{{ url_for ('edit_recipe',recipe=recipe._id) }}" class="btn orange-btn">Edit</a>
+        <a href="{{ url_for ('delete_recipe',recipe=recipe._id) }}" class="btn grey-btn">Delete</a>
         {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<!-- pagination -->
+{% if pagination %}
+<div class="row center-align page-links">
+
+  {{ pagination.links }}
+</div>
+{% endif %}
 {% endblock %}
