@@ -56,11 +56,14 @@
 </ul>
 <li>As a registered user, I want to be able to vote (upvote or downvote) on other user's recipes.</li>
 <ul>
-<li></li>
+<li>Once logged in, I can select a recipe to view and once on the recipecard page I can scroll to the bottom to see the options to vote.</li>
+<li>There are two radio buttons with thumbs up and thumbs down next to them. Once I have selected one and clicked the 'Vote' button, I get a message to say 'Thank you for voting".</li>
 </ul>
 <li>As the admin user, I want to be able to remove and edit any recipe regardless of which user added it to the application.</li>
 <ul>
-<li></li>
+<li>When logged in as 'Admin' and on the 'Recipes' page, I am able to see a 'delete' and 'edit' button for each recipe.</li>
+<li>When clicking on'delete' the recipe is removed.</li>
+<li>When clicking on 'edit' i am redirected to the 'Edit Reicipe' page and I can carry out edits on the recipe.</li>
 </ul>
 </ol>
 

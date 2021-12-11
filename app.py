@@ -33,7 +33,7 @@ def index():
         x.append(recipe_name)
         counter1=Counter(x)
         votes=dict(counter1.most_common(3))
-    
+  
     return render_template("index.html", results=results, votes=votes)
 
 
