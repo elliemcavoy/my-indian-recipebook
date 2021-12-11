@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 <h2 class="center-align heading">{{ recipe.name }}</h2>
+{% if session.user %}
 <div class="center-align">
   <!-- Add to favourites button -->
   <form method="POST" action="{{ url_for('add_favourites', recipe=recipe._id) }}">
     <button class="btn-small buttons"><i class="fas fa-heart"></i> Add to favourites</button>
   </form>
 </div>
+{% endif %}
 <!-- Recipe details -->
 <div class="row">
   <div class="col s10 offset-s1">

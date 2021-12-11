@@ -46,11 +46,13 @@
 <li>Each recipe has a 'delete' and an 'edit' button.</li>
 <li>Upon clicking the 'delete' button a flash message is displayed advising the recipe has been deleted. The recipe has also been removed from the 'recipes' collection in MongoDB, the main recipes page and the section on the 'My Profile' page.</li>
 <li>Upon clicking the 'edit' button, I am redirected to the 'Edit Recipe' page where I can update the details as required.</li>
-<li>A bug was discovered because the image URL field was mandatory and also I had not included the if statement to insert a generic image if none provided. Please see the below section for how this bug was fixed. </li>
+<li>A bug was discovered because the image URL field was mandatory and I had not included the if statement to insert a generic image if none provided. Please see the below section for how this bug was fixed. </li>
 </ul>
 <li>As a registered user, I want to be able to add other user's recipes to 'My Favourites' and have easy access to them through my Profile.</li>
 <ul>
-<li></li>
+<li>An issue arose early during the testing of this section meaning that even unregistered users could add recipes to their favourites which should not have been available to them. Please see below details of this and the fixes put in place.</li>
+<li>After the fix & once logged in, I was able to view any recipe and once on the recipecard I was able to click on the 'Add to Favourites' button.</li>
+<li>Then, by visiting 'My Profile' I am able to see the recipe in the 'My Favourites' section.</li>
 </ul>
 <li>As a registered user, I want to be able to vote (upvote or downvote) on other user's recipes.</li>
 <ul>
