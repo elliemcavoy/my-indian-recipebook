@@ -219,12 +219,16 @@ def delete_recipe(recipe):
 def edit_recipe(recipe):
     meal_type = mongo.db.meal_type.find().sort("meal_type_name")
     if request.method == "POST":
-        submit = {
+        image=request.form.get("image")
+        if len(image) == 0:
+            image=("https://media.istockphoto.com/vectors/fork-knife-icon-vector-id468611140?k=20&m=468611140&s=170667a&w=0&h=vv4BkhlRA35rC-CkIvRBf-r4X9kcFSEQGnzNiJOFH5s=")
+            submit = {
             "meal_type_name": request.form.get("meal_type_name"),
             "name": request.form.get("name"),
             "ingredients": request.form.get("ingredients"),
             "method": request.form.get("method"),
             "time": request.form.get("time"),
+            "image": image,
             "created_by": session["user"]
         }
         mongo.db.recipes.update({"_id": ObjectId(recipe)}, submit)

@@ -6,11 +6,8 @@
 <ul>
 <li>By comparing the live recipes.html page with the recipes collection in MongoDB, I can see that all recipes currently listed are being parsed onto the page. If the number of recipes exceeds 6, the remaining recipes will be added to a new page which is correct as per the pagination function. This allows users to see all recipes but ensures the amount of data on the page is not too overwhelming. </li>
 <li>By typing a keyword or name into the search bar, and clicking 'Search', a list of all recipes containing the above mentioned word is generated. Clicking the 'reset' button just brings back a list of all recipes.</li>
-<li>A few issues were uncovered while testing this section. These are detailed below with the fixes that were applied:
-<ul>
-<li>When searching for a keyword using the 'search' button, a error was being presented as 'pagination' was only defined in the 'recipes' function and not the 'search' function despite them both rendering the same html template. As the pagination was not required when displaying the search results, I removed this variable from the 'search' functions render_template call. I also added an if statement on the html template to only show the pagination links when called through the 'recipes' function otherwise an error was still present after the search.</li>
-<li>If no results were found when a search was conducted, there was no message to advise that this was the case.</li>
-</ul></ul>
+<li>A few issues were uncovered while testing this section. These are detailed in the below section with the fixes that were applied in order for the user story to now be fulfilled.
+</ul>
 <li>As a user, I want to be able to see the top three rated recipes at any given time.
 </li>
 <ul>
@@ -43,8 +40,13 @@
 </ul>
 <li>As a registered user, I want to be able to see all of my recipes via my Profile and have the ability to edit & delete them if required.</li>
 <ul>
-<li>
+<li>Once logged in, I am redirected to my Profile. The first section of 'My Profile' page shows all of the recipes that I have added as this user. 
 </li>
+<li>I check these against the recipes collection on MongoDB and all of the recipes are showing correctly.</li>
+<li>Each recipe has a 'delete' and an 'edit' button.</li>
+<li>Upon clicking the 'delete' button a flash message is displayed advising the recipe has been deleted. The recipe has also been removed from the 'recipes' collection in MongoDB, the main recipes page and the section on the 'My Profile' page.</li>
+<li>Upon clicking the 'edit' button, I am redirected to the 'Edit Recipe' page where I can update the details as required.</li>
+<li>A bug was discovered because the image URL field was mandatory and also I had not included the if statement to insert a generic image if none provided. Please see the below section for how this bug was fixed. </li>
 </ul>
 <li>As a registered user, I want to be able to add other user's recipes to 'My Favourites' and have easy access to them through my Profile.</li>
 <ul>
@@ -88,8 +90,15 @@ Here are details of bugs that were discovered during manual testing and how they
 
 <ol>
 <li>The pagination on the recipes.html page was causing an error when a search was carried out.</li>
+<ul>
+<li>When searching for a keyword using the 'search' button, a error was being presented as 'pagination' was only defined in the 'recipes' function and not the 'search' function despite them both rendering the same html template. As the pagination was not required when displaying the search results, I removed this variable from the 'search' functions render_template call. I also added an if statement on the html template to only show the pagination links when called through the 'recipes' function otherwise an error was still present after the search.</li>
+</ul>
+<li>If no results were found when a search was conducted, there was no message to advise that this was the case.</li>
+
 <li>The leaderboard function was generating a list which could not be counted using the Counter method.</li>
-<li>When the ingredients were being parsed onto the recipecard, they were just being displayed as a log list without any breaks between them.</li>
+<li>When the ingredients were being parsed onto the recipecard, they were just being displayed as a long list without any breaks between them.</li>
+<li>The 'Add to Favourites' button was visible to all users not just those that already have a profile.</li>
+<li>The 'edit recipe' form had the image URL as a mandatory field and also had no if statement for if no image was provided.</li>
 <li>A responsive design issue was discovered when the application was displayed on a smaller screen. The font size of the main heading in the navbar was too large on smaller screens meaning the full heading could not be seen. </li>
 </ol>
 
