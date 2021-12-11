@@ -20,7 +20,7 @@
     <!-- navbar -->
     <nav>
       <div class="nav-wrapper">
-        <a href="#!" class="brand-logo text-shadow" id="brand-logo">My Indian Recipebook</a>
+        <a href="{{ url_for('index') }}" class="brand-logo text-shadow" id="brand-logo">My Indian Recipebook</a>
         <!-- sidenav link -->
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
         <!-- menu links -->
@@ -28,13 +28,13 @@
           <li><a href="{{ url_for('index') }}">Home</a></li>
           <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
           {% if session.user %}
-          <li><a href="{{ url_for('my_profile', username=session['user']) }}">My Profile</a></li>
-          <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-          <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            <li><a href="{{ url_for('my_profile', username=session['user']) }}">My Profile</a></li>
+            <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
           {% else %}
-          <li><a href="{{ url_for('login') }}">Log In</a></li>
-          <li><a href="{{ url_for('register') }}">Register</a></li>
-          {% endif %}}
+            <li><a href="{{ url_for('login') }}">Log In</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+          {% endif %}
         </ul>
       </div>
     </nav>

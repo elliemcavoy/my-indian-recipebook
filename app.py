@@ -143,6 +143,9 @@ def recipes():
 def search():
     query = request.form.get("query")
     recipes = mongo.db.recipes.find({"$text": {"$search": query}})
+    results= list(recipes)
+    if len(results) == 0:
+        flash ("No recipes found")
     return render_template("recipes.html", recipes=recipes)
 
 
