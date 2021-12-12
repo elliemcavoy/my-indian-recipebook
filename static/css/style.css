@@ -198,6 +198,17 @@ main {
   text-shadow: 2px 2px #1b1b1be8;
 }
 
+/* Recipecard */
+.votes{
+  padding:10px;
+}
+
+.votes h5{
+  font-family: 'Arima Madurai';
+  font-weight:600;
+  color: rgba(255, 136, 0) ;
+}
+
 
 /* Footer */   
 .page-footer{
