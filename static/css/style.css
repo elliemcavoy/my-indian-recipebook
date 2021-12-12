@@ -1,8 +1,117 @@
 @import url('https://fonts.googleapis.com/css2?family=Arima+Madurai&family=Delius+Unicase&display=swap');
 
+/* Generic Styling */
+.text-shadow{
+  text-shadow: 2px 2px #fcfcfcd7;
+}
+.card-image img{
+  height: 200px;
+  width:100%;  
+}
+
+.inline-block{
+  display:inline-block;
+}
+
+.flashes{
+  margin-top:20px;
+  box-shadow: 3px 3px grey;
+  padding:0px;
+  height:60px;
+  border:1px solid black;
+  background-color:rgba(255, 166, 0, 0.726);
+  color:rgb(97, 97, 97);
+  font-family:'Arima Madurai';
+
+}
+
+.flashes h4{
+  margin:0px;
+  padding-top:5px;
+}
+
+.heading{
+  font-family: 'Arima Madurai';
+  font-weight:600;
+  color: rgba(255, 136, 0) ;
+  text-shadow: 2px 2px #1b1b1be8;
+}
+
+.page-text{
+  font-family: 'Arima Madurai';
+  color:grey;
+  font-size:20px;
+}
+
+.page-text-link{
+  font-family: 'Arima Madurai';
+  color:grey;
+  font-size:30px;
+}
+
+.info-form{
+  padding:10px;
+}
+
+.images img{
+  object-fit:cover;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* Icons */
+.collapsible i{
+  color: rgba(255, 136, 0) ;
+  text-shadow: 2px 2px #1b1b1be8;
+}
+
+.form-icon{
+  color: rgba(255, 136, 0) ;
+  text-shadow: 2px 2px #1b1b1be8;
+  padding:5px;
+}
+
+.page-text i{
+  color: rgba(255, 136, 0) ;
+  text-shadow: 2px 2px #1b1b1be8;
+  padding:5px;
+}
+
+.btn-floating i{
+  color:rgba(155, 154, 154, 0.87);
+}
+
+
+/* Buttons */
+.buttons{
+  background-color: rgba(255, 136, 0);
+  font-family: 'Arima Madurai';
+}
+
+.buttons:hover{
+  background-color: rgba(155, 154, 154, 0.87);  
+}
+
+.grey-btn{
+  background-color:grey;
+}
+
+.orange-btn{
+  background-color:rgba(255, 136, 0);
+}
+
+
+/* Navbar */
 .nav-wrapper{
   background-color: rgba(116, 115, 115, 0.911);
-
 }
 
 #brand-logo{
@@ -10,9 +119,7 @@
   font-weight:600;
   padding-left:10px;
   color: rgba(255, 136, 0) ;
-  font-family: 'Delius Unicase';
-  width:78%;
-  
+  font-family: 'Delius Unicase';  
 }
 
 @media(max-width:615px){
@@ -28,174 +135,81 @@
 }
 
 .nav-wrapper a{
-  
   font-weight: 500;
   font-size: 15px;
   font-family: 'Arima Madurai';
 }
 
-.text-shadow{
-  text-shadow: 2px 2px #fcfcfcd7;
-}
+
+/* index.html page */
 #logo-container{
-    margin:0px;
-    padding:0px;
+  margin:0px;
+  padding:0px;
 }
+
 #logo{
-    z-index: 1;
-    position:relative;
-    height: 100%;
-    width:100%;
-    padding:0px;
+  z-index: 1;
+  position:relative;
+  height: 100%;
+  width:100%;
+  padding:0px;
 }
 
 #logo img{
-    width:100%;
-    object-fit: cover;
+  width:100%;
+  object-fit: cover;
 }
 
 #bubble{
-    z-index:2;
-        position:absolute;
-        left:10%;
-        top:20%;
-        text-align:center;
-        color: rgba(255, 136, 0) ;
-        text-shadow: 2px 2px #1b1b1be8;
-        font-weight: 600;
-        font-size: 35px;
-        font-family: 'Arima Madurai';
-        }
-  
-    
+  z-index:2;
+  position:absolute;
+  left:10%;
+  top:20%;
+  text-align:center;
+  color: rgba(255, 136, 0) ;
+  text-shadow: 2px 2px #1b1b1be8;
+  font-weight: 600;
+  font-size: 35px;
+  font-family: 'Arima Madurai';
+}
+      
 @media(max-width:975px){
   #bubble{
     display:none;
   }
 }
 
-    .card-image img{
-      height: 200px;
-      width:100%;
-      
-    }
 
-    .inline-block{
-      display:inline-block;
-    }
+/* Search bar */
+.search i{
+  color: rgba(255, 136, 0) ;
+  text-shadow: 2px 2px #1b1b1be8;
+}
 
-    .flashes{
-      margin-top:20px;
-      box-shadow: 3px 3px grey;
-      padding:0px;
-      height:60px;
-      border:1px solid black;
-      background-color:rgba(255, 166, 0, 0.726);
-      color:rgb(97, 97, 97);
-      font-family:'Arima Madurai';
 
-    }
+/* Footer */   
+.page-footer{
+  background-color: rgba(116, 115, 115, 0.911);
+}
 
-    .flashes h4{
-      margin:0px;
-      padding-top:5px;
-    }
+.footer-container{
+  padding-bottom:10px;
+}
 
-    .heading{
-      font-family: 'Arima Madurai';
-      font-weight:600;
-      color: rgba(255, 136, 0) ;
-      text-shadow: 2px 2px #1b1b1be8;
-    }
 
-    .page-text{
-      font-family: 'Arima Madurai';
-      color:grey;
-      font-size:20px;
-
-    }
-
-    .page-text-link{
-      font-family: 'Arima Madurai';
-      color:grey;
-      font-size:30px;
-    }
-
-    .page-text i{
-      color: rgba(255, 136, 0) ;
-      text-shadow: 2px 2px #1b1b1be8;
-      padding:5px;
-    }
-
-    .btn-floating i{
-      color:rgba(155, 154, 154, 0.87);
-    }
-
-    .info-form{
-      padding:10px;
-    }
-    
-    .collapsible i{
-      color: rgba(255, 136, 0) ;
-      text-shadow: 2px 2px #1b1b1be8;
-    }
-    .buttons{
-      background-color: rgba(255, 136, 0);
-      font-family: 'Arima Madurai';
-    }
-
-    .buttons:hover{
-      background-color: rgba(155, 154, 154, 0.87);
-      
-    }
-
-    .form-icon{
-      color: rgba(255, 136, 0) ;
-      text-shadow: 2px 2px #1b1b1be8;
-      padding:5px;
-    }
-
-    .images img{
-      object-fit:cover;
-
-    }
-
-    .search i{
-      color: rgba(255, 136, 0) ;
-      text-shadow: 2px 2px #1b1b1be8;
-    }
-
-    .grey-btn{
-      background-color:grey;
-    }
-
-    .orange-btn{
-      background-color:rgba(255, 136, 0);
-    }
-
-    .page-footer{
-      background-color: rgba(116, 115, 115, 0.911);
-    }
-
-    .footer-container{
-      padding-bottom:10px;
-    }
-
+/* Pagination */  
 .page-links nav{
   text-align:center;
   background-color: white;
   width:100%;
-
 }
 
 .page-links li{
   text-align:center;
   height:70%;
-
 }
 
 .pagination a {
-  
   height:100%;
   border-radius: 5px;
 }
@@ -204,17 +218,7 @@
   display:inline-block;
 }
 
-
 .pagination li.active {
   background-color: orange;
 }
 
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-main {
-  flex: 1 0 auto;
-}
