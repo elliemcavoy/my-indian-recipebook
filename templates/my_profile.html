@@ -11,11 +11,11 @@
         <div class="card">
           <div class="card-image images">
             <img src="{{ recipe.image }}">
-            <a class="btn-floating halfway-fab waves-effect waves-light red"
-              href="{{ url_for('recipecard', recipe=recipe._id) }}"><i class="fas fa-eye"></i></a>
+            <a class="btn-floating btn-large halfway-fab buttons"
+              href="{{ url_for('recipecard', recipe=recipe._id) }}">View</a>
           </div>
           <div class="card-content center-align">
-            <span class="card-title">{{ recipe.name }} </span>
+            <span class="card-title"><a href="{{ url_for('recipecard', recipe=recipe._id) }}" class="page-text-link"> {{ recipe.name }} </a></span>
             <a href="{{ url_for ('edit_recipe',recipe=recipe._id) }}" class="btn orange-btn">Edit</a>
             <a href="{{ url_for ('delete_recipe',recipe=recipe._id) }}" class="btn grey-btn">Delete</a>
           </div>
@@ -32,11 +32,11 @@
         <div class="card">
           <div class="card-image images">
             <img src="{{ favourite.image }}">
-            <a class="btn-floating halfway-fab waves-effect waves-light"
-              href="{{ url_for('favourite_recipecard', favourite=favourite._id) }}"><i class="fas fa-eye"></i></a>
+            <a class="btn-floating btn-large halfway-fab buttons"
+              href="{{ url_for('favourite_recipecard', favourite=favourite._id) }}">View</a>
           </div>
           <div class="card-content center-align">
-            <span class="card-title">{{ favourite.name }} </span>
+            <span class="card-title"><a href="{{ url_for('favourite_recipecard', favourite=favourite._id) }}" class="page-text-link"> {{ favourite.name }} </a> </span>
             <div>
               <a href="{{ url_for ('delete_favourite',favourite=favourite._id) }}" class="btn-small orange-btn">Remove
                 from My Favourites</a>
