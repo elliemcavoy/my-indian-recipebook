@@ -1,4 +1,4 @@
-<h4>Manual Testing</h4>
+<h1>Manual Testing</h1>
 
 <h3>Manual Testing of User Stories</h3>
 <ol>
@@ -99,12 +99,26 @@ Here are details of bugs that were discovered during manual testing and how they
 <li>When searching for a keyword using the 'search' button, a error was being presented as 'pagination' was only defined in the 'recipes' function and not the 'search' function despite them both rendering the same html template. As the pagination was not required when displaying the search results, I removed this variable from the 'search' functions render_template call. I also added an if statement on the html template to only show the pagination links when called through the 'recipes' function otherwise an error was still present after the search.</li>
 </ul>
 <li>If no results were found when a search was conducted, there was no message to advise that this was the case.</li>
+<ul>
+<li>An additional if statement was added to the 'search' function so that if the length of the list returned from the search was zero, a flash message appeared to advise.</li></ul>
 
-<li>The leaderboard function was generating a list which could not be counted using the Counter method.</li>
+<li>The leaderboard function was generating a list which could not be parsed onto the html page.</li>
+<ul>
+<li>I added the dict() method to convert the 3 most common recipe names into a dictionary which could then be parsed onto the page.</li>
+</ul>
 <li>When the ingredients were being parsed onto the recipecard, they were just being displayed as a long list without any breaks between them.</li>
+<ul>
+<li>I have modified the recipecard function to split the ingredients after each comma and the method after each full stop. This means that each separate part will be parsed onto a new line giving some separation. This fix will only work if the user inputs the details with commas and full stops. A feature I would like to eventually add is a way for users to add each ingredient and method step into a different field which could then be parsed separately.</li></ul>
 <li>The 'Add to Favourites' button was visible to all users not just those that already have a profile.</li>
+<ul>
+<li>I added an if statement onto the recipecard.html page to only show the 'Add to favourite' button if a session user was present i.e. if the user was logged in as a registered user.</li></ul>
 <li>The 'edit recipe' form had the image URL as a mandatory field and also had no if statement for if no image was provided.</li>
 <li>A responsive design issue was discovered when the application was displayed on a smaller screen. The font size of the main heading in the navbar was too large on smaller screens meaning the full heading could not be seen. </li>
+<ul>
+<li>I added some custom CSS styling to change the font size of the main heading at different screen sizes. This meant that the full heading is displayed no matter the size of the screen.</li></ul>
+<li>The 'Home' & 'Recipes' links on the full size navbar stopped working after some custom styling was added to the navbar.</li>
+<ul>
+<li>After reviewing the custom styling added to the logo on the navbar, it was overlapping the navbar links meaning they could not be clicked on as the logo container was obstructing them. I reduced the size of the container and the links began to work again.</li></ul>
 </ol>
 
 <h3>Bugs still to be rectified</h3>
