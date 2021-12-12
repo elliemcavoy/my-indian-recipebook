@@ -27,17 +27,17 @@
 <li><a href="#credits">Credits</a></li>
 </ol>
 <h1 id="ux"><u>UX</u></h1>
-This web based application's primary purpose is to allow the sharing of recipes. The recipes will be available to browse by any visitor to the website. However, additional functionality will be made available for user's that register on the site. A search functionality will provide any visitors the ability to search for recipes by a keyword such as an ingredient or name. Registering on the site will allow users to, once logged in, edit and delete their own recipes. It will also allow them to add other user's recipes to their favourite's list which will then be stored in their profile and be readily available for them to view. A leaderboard on the main page will also allow visitors to see the current most voted for recipes.
+This web based application's primary purpose is to allow the sharing of recipes. The recipes will be available to browse by any visitor to the website. However, additional functionality will be made available for user's that register on the site. A search functionality will provide any visitors the ability to search for recipes by a keyword such as an ingredient or name. Registering on the site will allow users to, once logged in, edit and delete their own recipes. It will also allow them to add other user's recipes to their favourite's list which will then be stored in their profile and be readily available for them to view. A leaderboard on the main page will also allow visitors to see the current most voted for recipes.<br>
 
 <h2 id="wireframes">Wireframes</h2>
 Please see the wireframes for this project:<br>
 <a href="https://share.balsamiq.com/c/nyqLcnpov9SR5JqB1idUpW.png" target="_blank">Desktop</a><br>
-<a href="https://share.balsamiq.com/c/smk12dS2m54dXyfPrxxRvk.png" target="_blank">Mobile</a>
+<a href="https://share.balsamiq.com/c/smk12dS2m54dXyfPrxxRvk.png" target="_blank">Mobile</a><br>
 
 <h2 id="target-audience">Target Audience</h2>
 <ul>
 <li>The audience that this application will be aimed at will be avid home cooks who have a particular interest in Indian Cuisine. </li>
-</ul>
+</ul><br>
 
 <h2 id="user-stories">User Stories</h2>
 As a user of the website, the following actions and results would need to be achieved:
@@ -51,19 +51,19 @@ As a user of the website, the following actions and results would need to be ach
 <li>As a registered user, I want to be able to see all of my recipes via my Profile and have the ability to edit & delete them if required.</li>
 <li>As a registered user, I want to be able to add other user's recipes to 'My Favourites' and have easy access to them through my Profile.</li>
 <li>As a registered user, I want to be able to vote (upvote or downvote) on other user's recipes.</li>
-<li>As the admin user, I want to be able to remove and edit any recipe regardless of which user added it to the application.</li></ol>
+<li>As the admin user, I want to be able to remove and edit any recipe regardless of which user added it to the application.</li></ol><br>
 
 
 
-<h4 id="typography">Typography</h4>
+<h2 id="typography">Typography</h2>
 2 Google Fonts were used in this project:
 <ol>
 <li>Delius Unicase - Logo</li>
 <li>Arima Madurai - Main Body text & headings </li>
-</ol>
+</ol><br>
 
 <h1 id="database"><u>Database</u></h1>
-For this project, there will be 5 collections in the MongoDB database that I have created called 'recipebook'. The tables below show the structure and items in each of the collections.
+For this project, there will be 5 collections in the MongoDB database that I have created called 'recipebook'. The tables below show the structure and items in each of the collections.<br>
 
 <h3><u>Users</u></h3>
 
@@ -73,6 +73,7 @@ For this project, there will be 5 collections in the MongoDB database that I hav
 |username| Username decided by user|
 |password| Password chosen by user that has been hashed|
 
+<br>
 <h3><u>Recipes</u></h3>
 
 | Key                | Value          | 
@@ -86,6 +87,7 @@ For this project, there will be 5 collections in the MongoDB database that I hav
 |image| URL for image of finished dish|
 |created_by|username of the user who added recipe|
 
+<br>
 <h3><u>Meal_type</u></h3>
 This collection is limited to 4 entries which are: Starter, Meain Course, Side Dish and Dessert. The collection cannot be added to or changed apart from manually through MongoDB.
 
@@ -94,6 +96,7 @@ This collection is limited to 4 entries which are: Starter, Meain Course, Side D
 |_id | Object Id (automatically generated to be unique)|
 |meal_type_name| Type of dish|
 
+<br>
 <h3><u>Vote</u></h3>
 
 | Key                | Value          | 
@@ -103,6 +106,7 @@ This collection is limited to 4 entries which are: Starter, Meain Course, Side D
 |recipe_name|Name of dish that has been voted|
 |added_by|Username of user who is voting|
 
+<br>
 <h3><u>Favourites</u></h3>
 
 | Key                | Value          | 
@@ -115,9 +119,10 @@ This collection is limited to 4 entries which are: Starter, Meain Course, Side D
 |image| URL for image of dish|
 |added_by| Username of user who added to favourites|
 
-
+<br>
 <h1 id="#features"><u>Features</u></h1>
 
+<br>
 <h2 id="existing-features"><u>Existing Features</u></h2>
 <ol>
 <li>NAVIGATION</li>
@@ -132,6 +137,7 @@ This collection is limited to 4 entries which are: Starter, Meain Course, Side D
 <li>LEADERBOARD</li>
 </ol>
 
+<br>
 <h2 id="new-features"><u>Features Left to Implement</u></h2>
 <ol>
 <li>I would ideally like to connect to a supermarket API which is could then link to the ingredients from each recipe to display the prices of these items and give users the option to purchase them from the recipecard page.</li>
@@ -142,19 +148,37 @@ This collection is limited to 4 entries which are: Starter, Meain Course, Side D
 
 
 <h1 id="technologies"><u>Technologies Used</u></h1>
+
+<h3>Languages Used</h3>
 <ul>
 <li>HTML5</li>
 <li>CSS3 </li>
 <li>JavaScript</li>
-<li>JQuery</li>
 <li>Python3</li>
-<li>MongoDB</li>
-<li>Flask Framework</li>
-<li>Git</li>
-<li>GitHub</li>
+</ul>
+<h3>Libraries Used</h3>
+<ul>
+<li>JQuery</li>
 <li><a href="https://materializecss.com/">Materialize</a> - Used to provide page structure, Navbar design and form components. Also used to provide generic styling. </li>
 <li><a href="https://fontawesome.com/">Font Awesome</a>  - Icons for forms and styling.</li>
 <li><a href="https://fonts.google.com/">Google Fonts</a> - Used to create a look in keeping with the website aim and to create uniform styling throughout.</li>
+</ul>
+<h3>Python Frameworks & Libraries</h3>
+<ul>
+<li>Flask Framework</li>
+<ul><li>PyMongo</li>
+<li>Split</li>
+<li>Paginate</li>
+</ul>
+<li>werkzeug.security</li>
+<li>bson</li>
+<li>Counter</li>
+<li>Random</li>
+</ul>
+<li>MongoDB</li>
+<li>Git</li>
+<li>GitHub</li>
+
 </ul>
 
 <h1 id="testing"><u>Testing</u></h1>
@@ -165,7 +189,7 @@ This collection is limited to 4 entries which are: Starter, Meain Course, Side D
 </ul>
 
 <h4>Manual Testing</h4>
-I have carried out a lot of manual testing on different aspects of this project. Please see detailed manual testing logs <a href="testing.md"> here </a>.
+I have carried out a lot of manual testing on different aspects of this project. Please see detailed manual testing logs <a href="/workspace/my-indian-recipebook/testing.md"> here </a>.
 Please see below a brief overview of the testing carried out. Any issues found and fixes put in place are documented in the testing log.
 
 | Page                  | Bug Detected   | Bug fixed Y/N |
