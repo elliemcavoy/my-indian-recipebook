@@ -27,16 +27,18 @@
     <h2 class="center-align heading">My Favourites</h2>
     <div class="row">
       <!-- recipes added to favourites by user -->
-      {% for item in my_favourites %}
+      {% for recipe in recipes %}
+      {% for item in user.favourites %}
+            {% if recipe._id == item %}
       <div class="col s12 m6 l4 inline-block page-text">
         <div class="card">
           <div class="card-image images">
-            <img src="{{ item.image }}">
+            <img src="{{ recipe.image }}">
             <a class="btn-floating btn-large halfway-fab buttons"
-              href="{{ url_for('favourite_recipecard', item=item._id) }}">View</a>
+              href="{{ url_for('favourite_recipecard', recipe=recipe._id) }}">View</a>
           </div>
           <div class="card-content center-align">
-            <span class="card-title"><a href="" class="page-text-link"> {{ item.name }} </a> </span>
+            <span class="card-title"><a href="" class="page-text-link"> {{ recipe.name }} </a> </span>
             <div>
               <a href="" class="btn-small orange-btn">Remove
                 from My Favourites</a>
@@ -44,6 +46,8 @@
           </div>
         </div>
       </div>
+      {% endif %}
+      {% endfor %}
       {% endfor %}
     </div>
 

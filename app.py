@@ -120,14 +120,13 @@ def my_profile(username):
         {"username": session["user"]})["username"]
     if session["user"]:
         my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
-        favourites=mongo.db.users.find({"username": session["user"]})
-        for favourite in favourites:
-            favourite_id=favourite.get("favourites")
-            for objectid in favourite_id:
-                my_favourites=mongo.db.recipes.find({"_id": ObjectId(objectid)})
+        user=mongo.db.users.find_one({"username": session["user"]})
+        recipes=mongo.db.recipes.find()
+    
                 
         return render_template("my_profile.html", username=username, 
-                                my_recipes=my_recipes, my_favourites=my_favourites)
+                                my_recipes=my_recipes, 
+                                recipes=recipes, user=user)
     
     return redirect(url_for("login"))
 
@@ -167,26 +166,26 @@ def recipecard(recipe):
                             time=time)
 
 
-@app.route("/favourite_recipecard/<item>")
-def favourite_recipecard(item):
-    item=mongo.db.recipes.find_one({"_id": ObjectId(item)})
-    method=item.get("method").split(".")
-    ingredients=item.get("ingredients").split(",")
+@app.route("/favourite_recipecard/<recipe>")
+def favourite_recipecard(recipe):
+    recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
+    method=recipe.get("method").split(".")
+    ingredients=recipe.get("ingredients").split(",")
     return render_template("favourite_recipecard.html", 
-                            item=item, method=method, 
+                            recipe=recipe, method=method, 
                             ingredients=ingredients)
 
 
-@app.route("/delete_favourite/<my_favourites>")
-def delete_favourite(my_favourites):
-    mongo.db.users.find({"_id": ObjectId(favourite)})
-    flash("Recipe removed for Favourites")
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
-    favourites=mongo.db.favourites.find({"added_by": session["user"]})
-    return render_template("my_profile.html", username=username, 
-                            my_recipes=my_recipes, favourites=favourites)
+#@app.route("/delete_favourite/<item>")
+#def delete_favourite(item):
+    #mongo.db.users.remove({"favourites": ObjectId(item)})
+    #flash("Recipe removed for Favourites")
+    #username = mongo.db.users.find_one(
+        #{"username": session["user"]})["username"]
+    #my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
+    #favourites=mongo.db.favourites.find({"added_by": session["user"]})
+    #return render_template("my_profile.html", username=username, 
+                            #my_recipes=my_recipes, favourites=favourites)
     
 
 @app.route("/add_favourites/<recipe>", methods=["GET", "POST"])
