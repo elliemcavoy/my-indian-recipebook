@@ -27,18 +27,18 @@
     <h2 class="center-align heading">My Favourites</h2>
     <div class="row">
       <!-- recipes added to favourites by user -->
-      {% for favourite in favourites %}
+      {% for item in my_favourites %}
       <div class="col s12 m6 l4 inline-block page-text">
         <div class="card">
           <div class="card-image images">
-            <img src="{{ favourite.image }}">
+            <img src="{{ item.image }}">
             <a class="btn-floating btn-large halfway-fab buttons"
-              href="{{ url_for('favourite_recipecard', favourite=favourite._id) }}">View</a>
+              href="">View</a>
           </div>
           <div class="card-content center-align">
-            <span class="card-title"><a href="{{ url_for('favourite_recipecard', favourite=favourite._id) }}" class="page-text-link"> {{ favourite.name }} </a> </span>
+            <span class="card-title"><a href="" class="page-text-link"> {{ item.name }} </a> </span>
             <div>
-              <a href="{{ url_for ('delete_favourite',favourite=favourite._id) }}" class="btn-small orange-btn">Remove
+              <a href="" class="btn-small orange-btn">Remove
                 from My Favourites</a>
             </div>
           </div>

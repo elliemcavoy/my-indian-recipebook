@@ -53,7 +53,7 @@ As a user of the website, the following actions and results would need to be ach
 <li>As a registered user, I want to be able to vote (upvote or downvote) on other user's recipes.</li>
 <li>As the admin user, I want to be able to remove and edit any recipe regardless of which user added it to the application.</li></ol><br>
 
-
+<h2>Design</h2>
 
 <h2 id="typography">Typography</h2>
 2 Google Fonts were used in this project:
@@ -175,9 +175,13 @@ This collection is limited to 4 entries which are: Starter, Meain Course, Side D
 <li>Counter</li>
 <li>Random</li>
 </ul>
+<h3>Database & Deployment</h3>
+<ul>
 <li>MongoDB</li>
 <li>Git</li>
 <li>GitHub</li>
+<li>Heroku</li>
+</ul>
 
 </ul>
 

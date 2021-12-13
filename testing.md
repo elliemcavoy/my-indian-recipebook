@@ -76,12 +76,27 @@ I manually tested the following to make sure they worked as designed:
 
 <h5>Navbar & Collapsible Navbar</h5>
 <ul>
-<li></li>
+<li>The largescreen navbar contains the logo and then the page links visible to the right hand side.</li>
+<li>When on a smaller screen, the navbar links are moved into the collapsible navbar to the left hand side or the logo.</li>
+<li>The full logo is always visible but the font size reduces as the screen size does to ensure this is possible.</li>
 </ul>
 
 <h5>Flashes</h5>
 <ul>
-<li></li>
+<li>Flashes are enabled when a function is completed and I need to advise the user that a task has been completed successfully.</li>
+<li>The flashes are used for the following:
+<ul><li>Username Already Exists</li>
+<li>Thank you for registering</li>
+<li>Incorrect Username and/or Password</li>
+<li>You have been logged out</li>
+<li>Recipe Added</li>
+<li>No results found</li>
+<li>Added to favourites</li>
+<li>Removed from favourites</li>
+<li>Recipe Successfully deleted</li>
+<li>Recipe updated</li>
+<li>Thank you for voting</li></ul>
+</li>
 </ul>
 
 <h5>Responsive Design</h5>
@@ -112,6 +127,7 @@ Here are details of bugs that were discovered during manual testing and how they
 <li>The 'Add to Favourites' button was visible to all users not just those that already have a profile.</li>
 <ul>
 <li>I added an if statement onto the recipecard.html page to only show the 'Add to favourite' button if a session user was present i.e. if the user was logged in as a registered user.</li></ul>
+<li>The 'Add to favourites' function was not originally using the most effective method. As it was adding the favourites to a new collection rather than assigning them to the user, eventually the collection would have been very large and would have slowed down the functionality. </li>
 <li>The 'edit recipe' form had the image URL as a mandatory field and also had no if statement for if no image was provided.</li>
 <li>A responsive design issue was discovered when the application was displayed on a smaller screen. The font size of the main heading in the navbar was too large on smaller screens meaning the full heading could not be seen. </li>
 <ul>

@@ -6,12 +6,14 @@ from flask import (
     redirect, request, session, url_for)
 from flask_split import split
 from flask_paginate import Pagination, get_page_parameter
-from flask_pymongo import PyMongo 
-from bson.objectid import ObjectId 
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from collections import Counter
+from pymongo import MongoClient
 if os.path.exists("env.py"):
     import env
+
 
 app = Flask(__name__)
 
@@ -118,9 +120,13 @@ def my_profile(username):
         {"username": session["user"]})["username"]
     if session["user"]:
         my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
-        favourites=mongo.db.favourites.find({"added_by": session["user"]})
-        return render_template("my_profile.html", username=username, 
-                                my_recipes=my_recipes, favourites=favourites)
+        favourites=mongo.db.users.find({"username": session["user"]})
+        for favourite in favourites:
+            favourite_id=favourite.get("favourites")
+            for objectid in favourite_id:
+                my_favourites=mongo.db.recipes.find({"_id": ObjectId(objectid)})
+                return render_template("my_profile.html", username=username, 
+                                my_recipes=my_recipes, my_favourites=my_favourites)
     
     return redirect(url_for("login"))
 
@@ -162,7 +168,7 @@ def recipecard(recipe):
 
 @app.route("/favourite_recipecard/<favourite>")
 def favourite_recipecard(favourite):
-    favourite=mongo.db.favourites.find_one({"_id": ObjectId(favourite)})
+    favourite=mongo.db.recipes.find_one({"_id": ObjectId(favourite)})
     method=favourite.get("method").split(".")
     ingredients=favourite.get("ingredients").split(",")
     return render_template("favourite_recipecard.html", 
@@ -184,29 +190,37 @@ def delete_favourite(favourite):
 
 @app.route("/add_favourites/<recipe>", methods=["GET", "POST"])
 def add_favourites(recipe):
-    recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
-    meal_type=recipe.get("meal_type_name")
-    name=recipe.get("name")
-    ingredients=recipe.get("ingredients")
-    method=recipe.get("method")
-    time= recipe.get("time")
-    image=recipe.get("image")
-    
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
+    recipe_id = recipe.get("_id")
     if request.method == "POST":
-        favourite={
-            "meal_type_name": meal_type,
-            "name": name,
-            "ingredients": ingredients,
-            "method": method,
-            "image": image,
-            "time": time,
-            "added_by": session["user"]
-        }
-        mongo.db.favourites.insert_one(favourite)
-        flash("Recipe Added to Favourite")
+        mongo.db.users.find_one_and_update(
+            {"username": session["user"]},
+            {"$addToSet": {"favourites": recipe_id }}
+        )
+        #mongo.db.users.aggregate([
+            #{'$match': {"username": session["user"]}},
+            #{'$addFields': {"favourites": {'$concat': ["$favourites", [recipe_id]]}}}
+        #])
 
     return render_template("recipecard.html", recipe=recipe)
- 
+
+#meal_type=recipe.get("meal_type_name")
+    #name=recipe.get("name")
+    #ingredients=recipe.get("ingredients")
+    #method=recipe.get("method")
+    #time= recipe.get("time")
+    #image=recipe.get("image")
+#favourite={
+            #"meal_type_name": meal_type,
+            #"name": name,
+            #"ingredients": ingredients,
+            #"method": method,
+            #"image": image,
+            #"time": time,
+            #"added_by": session["user"]
+        
+        #mongo.db.favourites.insert_one(favourite)
+        #flash("Recipe Added to Favourite") 
 
 @app.route("/delete_recipe/<recipe>")
 def delete_recipe(recipe):
