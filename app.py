@@ -125,7 +125,8 @@ def my_profile(username):
             favourite_id=favourite.get("favourites")
             for objectid in favourite_id:
                 my_favourites=mongo.db.recipes.find({"_id": ObjectId(objectid)})
-                return render_template("my_profile.html", username=username, 
+                
+        return render_template("my_profile.html", username=username, 
                                 my_recipes=my_recipes, my_favourites=my_favourites)
     
     return redirect(url_for("login"))
@@ -166,19 +167,19 @@ def recipecard(recipe):
                             time=time)
 
 
-@app.route("/favourite_recipecard/<favourite>")
-def favourite_recipecard(favourite):
-    favourite=mongo.db.recipes.find_one({"_id": ObjectId(favourite)})
-    method=favourite.get("method").split(".")
-    ingredients=favourite.get("ingredients").split(",")
+@app.route("/favourite_recipecard/<item>")
+def favourite_recipecard(item):
+    item=mongo.db.recipes.find_one({"_id": ObjectId(item)})
+    method=item.get("method").split(".")
+    ingredients=item.get("ingredients").split(",")
     return render_template("favourite_recipecard.html", 
-                            favourite=favourite, method=method, 
+                            item=item, method=method, 
                             ingredients=ingredients)
 
 
-@app.route("/delete_favourite/<favourite>")
-def delete_favourite(favourite):
-    mongo.db.favourites.delete_one({"_id": ObjectId(favourite)})
+@app.route("/delete_favourite/<my_favourites>")
+def delete_favourite(my_favourites):
+    mongo.db.users.find({"_id": ObjectId(favourite)})
     flash("Recipe removed for Favourites")
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]

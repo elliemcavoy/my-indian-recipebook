@@ -33,7 +33,7 @@
           <div class="card-image images">
             <img src="{{ item.image }}">
             <a class="btn-floating btn-large halfway-fab buttons"
-              href="">View</a>
+              href="{{ url_for('favourite_recipecard', item=item._id) }}">View</a>
           </div>
           <div class="card-content center-align">
             <span class="card-title"><a href="" class="page-text-link"> {{ item.name }} </a> </span>
