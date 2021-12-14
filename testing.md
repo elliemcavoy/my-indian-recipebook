@@ -137,6 +137,20 @@ Here are details of bugs that were discovered during manual testing and how they
 <li>After reviewing the custom styling added to the logo on the navbar, it was overlapping the navbar links meaning they could not be clicked on as the logo container was obstructing them. I reduced the size of the container and the links began to work again.</li></ul>
 </ol>
 
+<h3>Improvements Made</h3>
+<ul>
+<li>Add to Favourites</li>
+<ul>
+<li>Originally, the favourites recipes were stored in a separate database and when a user clicked the 'Add to favourites' button, all the details of the recipe were copied to a new database.</li>
+<li>Then when a user visited their profile, their favourite recipes were pulled from the favourites collection by searching for username in the 'added by' field.</li>
+<li>Please see below the original code for adding to favourites:] which was very long and not efficient:
+<img src="static/images/add_favourites.JPG"></li>
+<li>I then created a new key, value pair in the users collection so that each user has a field called 'favourites'.</li>
+<li>Initially I tried to use the aggregate functionality to match a user and add the recipe ID into the favourites field with the below code:
+<img src="static/images/aggregate.JPG"></li>
+<li>However, after speaking to Tutor Support, I was advised that it would just be simplier to use the find_one_and_update() method and then $addToSet to add each recipe into the favourites array. </li>
+</ul></ul>
+
 <h3>Bugs still to be rectified</h3>
 <ul>
 <li>Favourites recipecard is not correctly spliting the ingredients and method information as it does in the original recipecard.</li>

@@ -51,7 +51,8 @@ def register():
         
         register = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "favourites": []
         }
         mongo.db.users.insert_one(register)
         session["user"] = request.form.get("username").lower()
@@ -197,30 +198,9 @@ def add_favourites(recipe):
             {"username": session["user"]},
             {"$addToSet": {"favourites": recipe_id }}
         )
-        #mongo.db.users.aggregate([
-            #{'$match': {"username": session["user"]}},
-            #{'$addFields': {"favourites": {'$concat': ["$favourites", [recipe_id]]}}}
-        #])
+        flash("Recipe Added to Favourite")
 
-    return render_template("recipecard.html", recipe=recipe)
-
-#meal_type=recipe.get("meal_type_name")
-    #name=recipe.get("name")
-    #ingredients=recipe.get("ingredients")
-    #method=recipe.get("method")
-    #time= recipe.get("time")
-    #image=recipe.get("image")
-#favourite={
-            #"meal_type_name": meal_type,
-            #"name": name,
-            #"ingredients": ingredients,
-            #"method": method,
-            #"image": image,
-            #"time": time,
-            #"added_by": session["user"]
-        
-        #mongo.db.favourites.insert_one(favourite)
-        #flash("Recipe Added to Favourite") 
+    return render_template("recipecard.html", recipe=recipe) 
 
 @app.route("/delete_recipe/<recipe>")
 def delete_recipe(recipe):

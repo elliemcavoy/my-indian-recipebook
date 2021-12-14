@@ -108,6 +108,7 @@ This collection is limited to 4 entries which are: Starter, Meain Course, Side D
 
 <br>
 <h3><u>Favourites</u></h3>
+<p>This collection was originally used however after improvements were made to the code it was no longer required so is no longer referenced in the app.py.</p>
 
 | Key                | Value          | 
 |--------------------|----------------|
@@ -193,7 +194,7 @@ This collection is limited to 4 entries which are: Starter, Meain Course, Side D
 </ul>
 
 <h4>Manual Testing</h4>
-I have carried out a lot of manual testing on different aspects of this project. Please see detailed manual testing logs <a href="/workspace/my-indian-recipebook/testing.md"> here </a>.
+I have carried out a lot of manual testing on different aspects of this project. Please see detailed manual testing logs <a href="testing.md"> here </a>.
 Please see below a brief overview of the testing carried out. Any issues found and fixes put in place are documented in the testing log.
 
 | Page                  | Bug Detected   | Bug fixed Y/N |
@@ -213,7 +214,7 @@ Please see below a brief overview of the testing carried out. Any issues found a
 | Update Recipe (admin user)| No issues found     | 
 | Delete Recipe (user's own recipe) | No issues found     |
 | Delete Recipe (admin user) | No issues found     | 
-| Add to favourites | No issues found     | 
+| Add to favourites | ISSUE FOUND     | Y
 | View favourites recipecard | ISSUE FOUND  | N
 
 
