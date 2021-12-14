@@ -283,15 +283,19 @@ The MONGO_URI connection string can be found by doing the following in MongoDB:
 </ol>
 <h1 id="#credits">Credits</h1>
 
-<h3>Content</h3>
+<h3>Design</h3>
 <ul>
 <li>Navbar & side Navbar taken from Materialize version 1.0.0. This includes the Jquery used to operate the sidenav as well. </li>
 <li>Card class taken from Materialize which inlcudes a floating button.</li>
 <li>Form components HTML & CSS classes taken from Materialize including the Jquery to operate.</li>
 <li>Collapsible component taken from Materialize including the Jquery.</li>
 <li>Pagination implemented using code from <a href="https://stackoverflow.com/questions/54053873/implementation-of-pagination-using-flask-paginate-pymongo">https://stackoverflow.com/questions/54053873/implementation-of-pagination-using-flask-paginate-pymongo</a>.</li>
-<li>Google Fonts utilized for all font styles within the project.</li>
+<li>Google Fonts utilized for all font styles within the project.</li></ul>
+
+<h3>Code</h3>
+<ul>
 <li><a href="https://docs.mongodb.com/">MongoDB Documentation</a> used to help implement the search function.</li>
+
 </ul>
 
 <h3>Media</h3>
