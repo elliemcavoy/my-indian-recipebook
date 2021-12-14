@@ -53,7 +53,15 @@ As a user of the website, the following actions and results would need to be ach
 <li>As a registered user, I want to be able to vote (upvote or downvote) on other user's recipes.</li>
 <li>As the admin user, I want to be able to remove and edit any recipe regardless of which user added it to the application.</li></ol><br>
 
-<h2>Design</h2>
+<h2 id="design"><u>Design</u></h2>
+I have kept the design of the webpages simple and easy to navigate.
+<ul><li>All of the headings are the same size, colour & font and the colour scheme is the same throughout.</li>
+<li>Also all of the buttons have the same colour schemes and sizes.</li>
+<li>By using the card class from materialize, whenever the recipes are shown, the stlying and spacing is the same.</li>
+<li>Again with the collapsible class, all of the recipes will be displayed in the same format.</li>
+<li>To ensure that all of the recipes show an image, I have added a generic image to be displayed if an image is not provided by the user. This will allow the design to be the same for each recipe that is added.</li>
+<li>The colours used for this project are: rgba(255, 136, 0), rgba(116, 115, 115, 0.911), grey </li></ul>
+
 
 <h2 id="typography">Typography</h2>
 2 Google Fonts were used in this project:
@@ -63,64 +71,67 @@ As a user of the website, the following actions and results would need to be ach
 </ol><br>
 
 <h1 id="database"><u>Database</u></h1>
-For this project, there will be 5 collections in the MongoDB database that I have created called 'recipebook'. The tables below show the structure and items in each of the collections.<br>
+For this project, there will be 4 collections in the MongoDB database that I have created called 'recipebook'. The tables below show the items in each of the collections.<br>
 
 <h3><u>Users</u></h3>
 
-| Key                | Value          | 
-|--------------------|----------------|
-|_id | Object Id (automatically generated to be unique)|
-|username| Username decided by user|
-|password| Password chosen by user that has been hashed|
+| Key                | Value          |  Data Type       |
+|--------------------|----------------|------------------|
+|_id | Object Id (automatically generated to be unique)| ID |
+|username| Username decided by user| Varchar/Integer (20) |
+|password| Password chosen by user that has been hashed| Varchar/Integer (15) |
 
 <br>
 <h3><u>Recipes</u></h3>
 
-| Key                | Value          | 
-|--------------------|----------------|
-|_id | Object Id (automatically generated to be unique)|
-|name| Recipe Name|
-|ingredients| Recipe ingredients|
-|method| Method to create dish|
-|time| Time to create recipe|
-|meal_type_name| Starter, Main, Side or Dessert|
-|image| URL for image of finished dish|
-|created_by|username of the user who added recipe|
+| Key                | Value          |  Data Type       |
+|--------------------|----------------|------------------|
+|_id | Object Id (automatically generated to be unique)| ID |
+|name| Recipe Name| Text |
+|ingredients| Recipe ingredients| Text |
+|method| Method to create dish| Text |
+|time| Time to create recipe| Time |
+|meal_type_name| Starter, Main, Side or Dessert| Text | 
+|image| URL for image of finished dish| Text (URL) |
+|created_by|username of the user who added recipe| Varchar/Integer (20) |
 
 <br>
 <h3><u>Meal_type</u></h3>
 This collection is limited to 4 entries which are: Starter, Meain Course, Side Dish and Dessert. The collection cannot be added to or changed apart from manually through MongoDB.
 
-| Key                | Value          | 
-|--------------------|----------------|
-|_id | Object Id (automatically generated to be unique)|
-|meal_type_name| Type of dish|
+| Key                | Value          |  Data Type       |
+|--------------------|----------------|------------------|
+|_id | Object Id (automatically generated to be unique)| ID |
+|meal_type_name| Type of dish| Text |
 
 <br>
 <h3><u>Vote</u></h3>
 
-| Key                | Value          | 
-|--------------------|----------------|
-|_id | Object Id (automatically generated to be unique)|
-|vote| An array which is either upvote or downvote|
-|recipe_name|Name of dish that has been voted|
-|added_by|Username of user who is voting|
+| Key                | Value          |  Data Type       |
+|--------------------|----------------|------------------|
+|_id | Object Id (automatically generated to be unique)| ID |
+|vote| An array which is either upvote or downvote| Text |
+|recipe_name|Name of dish that has been voted| Text |
+|added_by|Username of user who is voting| Varchar/Integer (20) |
 
 <br>
 <h3><u>Favourites</u></h3>
 <p>This collection was originally used however after improvements were made to the code it was no longer required so is no longer referenced in the app.py.</p>
 
-| Key                | Value          | 
-|--------------------|----------------|
-|_id | Object Id (automatically generated to be unique)|
-|meal_type_name| Type of dish|
-|name|Recipe Name|
-|ingredients| Ingredients for selected recipe|
-|method| Method for selected recipe|
-|image| URL for image of dish|
-|added_by| Username of user who added to favourites|
+| Key                | Value          | Data Type       |
+|--------------------|----------------| ----------------|
+|_id | Object Id (automatically generated to be unique)| Id |
+|meal_type_name| Type of dish| Text|
+|name|Recipe Name| Text |
+|ingredients| Ingredients for selected recipe| Text |
+|method| Method for selected recipe| Text |
+|image| URL for image of dish| Text (url) |
+|added_by| Username of user who added to favourites| Varchar/Integer (20) |
 
 <br>
+<h3>Database Design</h3>
+Below is the design of how the collections will work together during the project.<br>
+<img src="static/images/conceptual.JPG">
 <h1 id="#features"><u>Features</u></h1>
 
 <br>
@@ -295,17 +306,23 @@ The MONGO_URI connection string can be found by doing the following in MongoDB:
 <h3>Code</h3>
 <ul>
 <li><a href="https://docs.mongodb.com/">MongoDB Documentation</a> used to help implement the search function.</li>
+<li><a href="https://stackoverflow.com/questions/54053873/implementation-of-pagination-using-flask-paginate-pymongo">Stack Overflow - Implementation of Pagination</a> which was used to implement the pagination on the 'recipes' page.</li>
+<li>Tutor Support assisted with adding the recipe ObjectId into the 'favourites' array and then retrieving the recipe using the ObjectId.</li>
+<li>Code Institute Turtorials were used for reference when creating functions.</li>
+<li>Task Manager Mini Project. Login, Register & Log Out functions taken from this project and just modified to fit in with my milestone project. Other functionality was based around Task Manager function such as the 'add recipe' and 'edit recipe' functions. </li>
+<li><a href="https://www.geeksforgeeks.org/python-counter-objects-elements/">Geeks for Geeks - Python Counter</a> used to help implement the Counter functionality in the voting function.</li>
 
 </ul>
 
 <h3>Media</h3>
 <ul>
 <li>Font Awesome used for all icons and symbols.
-</li></ul>
+</li>
+<li>Generic Image for recipe found at <a href="https://media.istockphoto.com/vectors/fork-knife-icon-vector-id468611140?k=20&m=468611140&s=170667a&w=0&h=vv4BkhlRA35rC-CkIvRBf-r4X9kcFSEQGnzNiJOFH5s=">https://media.istockphoto.com/vectors/fork-knife-icon-vector-id468611140?k=20&m=468611140&s=170667a&w=0&h=vv4BkhlRA35rC-CkIvRBf-r4X9kcFSEQGnzNiJOFH5s=</a></li></ul>
 
 
 
 
 
 
-.
+

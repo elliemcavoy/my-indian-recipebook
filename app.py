@@ -25,9 +25,12 @@ mongo = PyMongo(app)
 
 PER_PAGE = 6
 
+#Geeks for geeks used to implement the Counter functionality
 @app.route("/")
 @app.route("/index")
 def index():
+
+    #counts top three upvoted recipes from list of all upvotes
     x=[]
     results=mongo.db.vote.find({"vote": "upvote"})
     for item in results:
@@ -49,6 +52,7 @@ def register():
             flash("Username already exists")
             return redirect(url_for("register"))
         
+        #inserts blank array ready for favourites to be added
         register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
@@ -98,6 +102,7 @@ def logout():
 def add_recipe():
     if request.method == "POST":
         image=request.form.get("image")
+        #if no image provided stock image inserted
         if len(image) == 0:
             image=("https://media.istockphoto.com/vectors/fork-knife-icon-vector-id468611140?k=20&m=468611140&s=170667a&w=0&h=vv4BkhlRA35rC-CkIvRBf-r4X9kcFSEQGnzNiJOFH5s=")
         recipe = {
@@ -123,13 +128,10 @@ def my_profile(username):
         my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
         user=mongo.db.users.find_one({"username": session["user"]})
         recipes=mongo.db.recipes.find()
-    
-                
+        
         return render_template("my_profile.html", username=username, 
                                 my_recipes=my_recipes, 
                                 recipes=recipes, user=user)
-    
-    return redirect(url_for("login"))
 
 
 #pagination implemented with help from: https://stackoverflow.com/questions/54053873/implementation-of-pagination-using-flask-paginate-pymongo
@@ -172,23 +174,12 @@ def favourite_recipecard(recipe):
     recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
     method=recipe.get("method").split(".")
     ingredients=recipe.get("ingredients").split(",")
-    return render_template("favourite_recipecard.html", 
-                            recipe=recipe, method=method, 
+    return render_template("favourite_recipecard.html",
+                            recipe=recipe, method=method,
                             ingredients=ingredients)
 
 
-#@app.route("/delete_favourite/<item>")
-#def delete_favourite(item):
-    #mongo.db.users.remove({"favourites": ObjectId(item)})
-    #flash("Recipe removed for Favourites")
-    #username = mongo.db.users.find_one(
-        #{"username": session["user"]})["username"]
-    #my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
-    #favourites=mongo.db.favourites.find({"added_by": session["user"]})
-    #return render_template("my_profile.html", username=username, 
-                            #my_recipes=my_recipes, favourites=favourites)
-    
-
+#assistance from Tutor Support was required to implement this functionality
 @app.route("/add_favourites/<recipe>", methods=["GET", "POST"])
 def add_favourites(recipe):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
