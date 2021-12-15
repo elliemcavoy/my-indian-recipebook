@@ -38,9 +38,9 @@
               href="{{ url_for('favourite_recipecard', recipe=recipe._id) }}">View</a>
           </div>
           <div class="card-content center-align">
-            <span class="card-title"><a href="" class="page-text-link"> {{ recipe.name }} </a> </span>
+            <span class="card-title"><a href="{{ url_for('favourite_recipecard', recipe=recipe._id) }}" class="page-text-link"> {{ recipe.name }} </a> </span>
             <div>
-              <a href="" class="btn-small orange-btn">Remove
+              <a href="{{ url_for('remove_favourite', recipe=recipe._id) }}" class="btn-small orange-btn">Remove
                 from My Favourites</a>
             </div>
           </div>

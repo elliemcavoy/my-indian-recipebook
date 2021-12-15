@@ -25,6 +25,7 @@ mongo = PyMongo(app)
 
 PER_PAGE = 6
 
+
 #Geeks for geeks used to implement the Counter functionality
 @app.route("/")
 @app.route("/index")
@@ -190,9 +191,31 @@ def add_favourites(recipe):
             {"username": session["user"]},
             {"$addToSet": {"favourites": recipe_id }}
         )
-        flash("Recipe Added to Favourite")
+        flash("Recipe Added to Favourites")
 
-    return render_template("recipecard.html", recipe=recipe) 
+    return render_template("recipecard.html", recipe=recipe)
+
+
+@app.route("/remove_favourite/<recipe>", methods=["GET", "POST"])
+def remove_favourite(recipe):
+    recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
+    recipe_id = recipe.get("_id")
+    #if request.method == "POST":
+    mongo.db.users.find_one_and_update(
+        {"username": session["user"]},
+        {"$pull": {"favourites": recipe_id}}
+    )
+    flash("Recipe removed from Favourites")
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
+    user=mongo.db.users.find_one({"username": session["user"]})
+    recipes=mongo.db.recipes.find()
+    return render_template("my_profile.html", 
+                            username=username, my_recipes=my_recipes,
+                            recipes=recipes, user=user)
+
+
 
 @app.route("/delete_recipe/<recipe>")
 def delete_recipe(recipe):
@@ -201,8 +224,11 @@ def delete_recipe(recipe):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
+    user=mongo.db.users.find_one({"username": session["user"]})
+    recipes=mongo.db.recipes.find()
     return render_template("my_profile.html", 
-                            username=username, my_recipes=my_recipes)
+                            username=username, my_recipes=my_recipes,
+                            recipes=recipes, user=user)
 
 
 @app.route("/edit_recipe/<recipe>", methods=["GET", "POST"])
