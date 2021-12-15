@@ -208,12 +208,13 @@ def remove_favourite(recipe):
     flash("Recipe removed from Favourites")
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
-    user=mongo.db.users.find_one({"username": session["user"]})
-    recipes=mongo.db.recipes.find()
-    return render_template("my_profile.html", 
-                            username=username, my_recipes=my_recipes,
-                            recipes=recipes, user=user)
+    return my_profile(username)
+    #my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
+    #user=mongo.db.users.find_one({"username": session["user"]})
+    #recipes=mongo.db.recipes.find()
+    #return render_template("my_profile.html", 
+                            #username=username, my_recipes=my_recipes,
+                            #recipes=recipes, user=user)
 
 
 

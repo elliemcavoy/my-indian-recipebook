@@ -149,7 +149,11 @@ Here are details of bugs that were discovered during manual testing and how they
 <li>Initially I tried to use the aggregate functionality to match a user and add the recipe ID into the favourites field with the below code:
 <img src="static/images/aggregate.JPG"></li>
 <li>However, after speaking to Tutor Support, I was advised that it would just be simplier to use the find_one_and_update() method and then $addToSet to add each recipe into the favourites array. </li>
-</ul></ul>
+</ul>
+<li>Including Functions within Functions</li>
+<ul>
+<li>While testing and building the code, there was a lot of repetition of the same lines of code. Once I was sure each function was doing what it needed to do, I began including previous functions within new functions to avoid repetition.</li>
+<li>The 'my_profile' function is included in the 'remove_favourite' function as after the recipe is removed, the profile page needs to be reloaded.</li></ul></ul>
 
 <h3>Bugs still to be rectified</h3>
 <ul>
