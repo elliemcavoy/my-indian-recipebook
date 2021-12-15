@@ -141,6 +141,7 @@ main {
 @media(max-width:960px){
   #brand-logo{
     width:85%;
+    padding-left:20px;
   }
 }
 
@@ -183,9 +184,10 @@ main {
   font-family: 'Arima Madurai';
 }
       
-@media(max-width:985px){
+@media(max-width:1030px){
   #bubble{
     font-size:25px;
+    top:10%;
   }
 }
 
