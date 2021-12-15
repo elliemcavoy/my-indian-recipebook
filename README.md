@@ -212,6 +212,7 @@ Below is the design of how the collections will work together during the project
 <ul>
 <li>W3C HTML Validator</li>
 <li>W3C CSS Validator</li>
+<img src="static/images/css-validator.JPG">
 </ul>
 
 <h4>Manual Testing</h4>
