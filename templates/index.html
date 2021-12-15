@@ -4,7 +4,7 @@
   <!-- hero image -->
   <div class="row" id="logo-container">
     <div class="col s12" id="logo">
-      <img src="static/images/hero-img.jpg">
+      <img src="static/images/hero-img.jpg" alt="spices-image">
     </div>
     <!-- floating bubble with text -->
     <div id="bubble" class="col s4"><span>
@@ -22,9 +22,9 @@
     <p>Our top rated recipes are:</p>
     {% for vote in votes %}
     <div class="col s12 center-align">
-      <i class="fas fa-trophy"></i>
+      <i class="fas fa-trophy" alt="trophy"></i>
       {{vote}}
-      <i class="fas fa-trophy"></i>
+      <i class="fas fa-trophy" alt="trophy"></i>
     </div>
     {% endfor %}
   </div>

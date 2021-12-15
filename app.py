@@ -144,7 +144,8 @@ def recipes():
 
     page = request.args.get(get_page_parameter(), type=int, default=1)
     allrecipe = mongo.db.recipes.find().skip((page - 1) * PER_PAGE).limit(PER_PAGE)
-    pagination = Pagination(page=page,per_page=6 ,total=allrecipe.count(), search=search, record_name='allpost')
+    pagination = Pagination(page=page, per_page=6 ,total=allrecipe.count(), 
+        search=search, record_name='allpost')
     return render_template('recipes.html', recipes=allrecipe, pagination=pagination)
 
 
@@ -164,8 +165,8 @@ def recipecard(recipe):
     method=recipe.get("method").split(".")
     ingredients=recipe.get("ingredients").split(",")
     time=recipe.get("time")
-    return render_template("recipecard.html", recipe=recipe, 
-                            method=method, ingredients=ingredients, 
+    return render_template("recipecard.html", recipe=recipe,
+                            method=method, ingredients=ingredients,
                             time=time)
 
 
@@ -200,7 +201,8 @@ def delete_recipe(recipe):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
-    return render_template("my_profile.html", username=username, my_recipes=my_recipes)
+    return render_template("my_profile.html", 
+                            username=username, my_recipes=my_recipes)
 
 
 @app.route("/edit_recipe/<recipe>", methods=["GET", "POST"])
