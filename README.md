@@ -12,6 +12,7 @@
 <li><a href="#user-stories">User Stories</a></li>
 <li><a href="#design">Design</a></li>
 <ul>
+<li><a href="defensive-design">Defensive Design</a></li>
 <li><a href="typography">Typography</a></li>
 </ul>
 </ul>
@@ -62,9 +63,18 @@ I have kept the design of the webpages simple and easy to navigate.
 <li>To ensure that all of the recipes show an image, I have added a generic image to be displayed if an image is not provided by the user. This will allow the design to be the same for each recipe that is added.</li>
 <li>The colours used for this project are: rgba(255, 136, 0), rgba(116, 115, 115, 0.911), grey </li></ul>
 
+<h2 id="defensive-design">Defensive Design</h2>
+<p>Defensive design for this application was built into a lot of the functions as well as the templates. This means that only registered user can access certain parts of the application and edits can only be made by the relevant people.</p>
+<ul>
+<li>An IF statement on the base template means that unless a user is logged in, they only have access to the following pages: Home, Recipes, Log In & Register. They are able to view recipes but cannot vote or add them to favourites.</li>
+<li>The registration form requires a unique username & password to be provided to ensure users cannot duplicate log in details. The password will be hashed before being entered into the users collection for added security.</li>
+<li>The Log In will only be successful if the username & password match those provided in the users collection.</li>
+<li>To ensure only the author of each recipe can edit or delete them, the buttons to do so only appear on their recipes once they are logged in and once they are on their 'My Profile' page. </li>
+<li>To ensure that an admin user has complete control over the content, if they are logged in, they are able to delete and edit any recipe from the 'Recipes' page.</li>
+</ul>
 
 <h2 id="typography">Typography</h2>
-2 Google Fonts were used in this project:
+<p>2 Google Fonts were used in this project:</p>
 <ol>
 <li>Delius Unicase - Logo</li>
 <li>Arima Madurai - Main Body text & headings </li>
@@ -305,12 +315,13 @@ The MONGO_URI connection string can be found by doing the following in MongoDB:
 
 <h3>Code</h3>
 <ul>
-<li><a href="https://docs.mongodb.com/">MongoDB Documentation</a> used to help implement the search function.</li>
+<li><a href="https://docs.mongodb.com/">MongoDB Documentation</a> used to help implement the search function and the pull method used in removing an item from favourites.</li>
 <li><a href="https://stackoverflow.com/questions/54053873/implementation-of-pagination-using-flask-paginate-pymongo">Stack Overflow - Implementation of Pagination</a> which was used to implement the pagination on the 'recipes' page.</li>
 <li>Tutor Support assisted with adding the recipe ObjectId into the 'favourites' array and then retrieving the recipe using the ObjectId.</li>
 <li>Code Institute Turtorials were used for reference when creating functions.</li>
 <li>Task Manager Mini Project. Login, Register & Log Out functions taken from this project and just modified to fit in with my milestone project. Other functionality was based around Task Manager function such as the 'add recipe' and 'edit recipe' functions. </li>
 <li><a href="https://www.geeksforgeeks.org/python-counter-objects-elements/">Geeks for Geeks - Python Counter</a> used to help implement the Counter functionality in the voting function.</li>
+
 
 </ul>
 
