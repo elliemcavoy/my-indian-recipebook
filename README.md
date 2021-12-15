@@ -211,6 +211,7 @@ Below is the design of how the collections will work together during the project
 <h4>Validators</h4>
 <ul>
 <li>W3C HTML Validator</li>
+All pages of HTML content have been checked by the HTML validator and have passed.
 <li>W3C CSS Validator</li>
 <img src="static/images/css-validator.JPG">
 </ul>
