@@ -35,10 +35,10 @@
           <div class="card-image images">
             <img src="{{ recipe.image }}">
             <a class="btn-floating btn-large halfway-fab buttons"
-              href="{{ url_for('favourite_recipecard', recipe=recipe._id) }}">View</a>
+              href="{{ url_for('recipecard', recipe=recipe._id) }}">View</a>
           </div>
           <div class="card-content center-align">
-            <span class="card-title"><a href="{{ url_for('favourite_recipecard', recipe=recipe._id) }}" class="page-text-link"> {{ recipe.name }} </a> </span>
+            <span class="card-title"><a href="{{ url_for('recipecard', recipe=recipe._id) }}" class="page-text-link"> {{ recipe.name }} </a> </span>
             <div>
               <a href="{{ url_for('remove_favourite', recipe=recipe._id) }}" class="btn-small orange-btn">Remove
                 from My Favourites</a>

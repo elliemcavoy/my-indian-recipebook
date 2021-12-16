@@ -171,16 +171,6 @@ def recipecard(recipe):
                             time=time)
 
 
-@app.route("/favourite_recipecard/<recipe>")
-def favourite_recipecard(recipe):
-    recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
-    method=recipe.get("method").split(".")
-    ingredients=recipe.get("ingredients").split(",")
-    return render_template("favourite_recipecard.html",
-                            recipe=recipe, method=method,
-                            ingredients=ingredients)
-
-
 #assistance from Tutor Support was required to implement this functionality
 @app.route("/add_favourites/<recipe>", methods=["GET", "POST"])
 def add_favourites(recipe):
