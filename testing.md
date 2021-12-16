@@ -74,14 +74,14 @@ I have used Lighthouse to gain a performance score for this site. Please see bel
 <h3>Manual Testing of key aspects of the website</h3>
 I manually tested the following to make sure they worked as designed:
 
-<h5>Navbar & Collapsible Navbar</h5>
+<h4>Navbar & Collapsible Navbar</h4>
 <ul>
 <li>The largescreen navbar contains the logo and then the page links visible to the right hand side.</li>
 <li>When on a smaller screen, the navbar links are moved into the collapsible navbar to the left hand side or the logo.</li>
 <li>The full logo is always visible but the font size reduces as the screen size does to ensure this is possible.</li>
 </ul>
 
-<h5>Flashes</h5>
+<h4>Flashes</h4>
 <ul>
 <li>Flashes are enabled when a function is completed and I need to advise the user that a task has been completed successfully.</li>
 <li>The flashes are used for the following:
@@ -97,11 +97,14 @@ I manually tested the following to make sure they worked as designed:
 <li>Recipe updated</li>
 <li>Thank you for voting</li></ul>
 </li>
+<li>I have tested each function and the flash messages are displayed correctly at the top of the page once the function has been completed.</li>
 </ul>
 
-<h5>Responsive Design</h5>
+<h4>Responsive Design</h4>
 <ul>
-<li></li>
+<li>I have tested each page on all screen sizes to ensure the design is consistent no matter what device it is being viewed on.</li>
+<li>The navbar, as mentioned above, will adapt depending on the screen size to include a collapsible navbar on smaller screens.</li>
+<li>The cards used to display the recipes & the favourite recipes are designed to take up 4 columns on a medium & large sized screen. They then change to display across 6 columns on a small screen and then across all 12 columns on an extra small screen such as a smartphone. This means that they are easy to read no matter what size screen they are viewed on.</li>
 <li></li>
 </ul>
 

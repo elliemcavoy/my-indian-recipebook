@@ -190,7 +190,6 @@ def add_favourites(recipe):
 def remove_favourite(recipe):
     recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
     recipe_id = recipe.get("_id")
-    #if request.method == "POST":
     mongo.db.users.find_one_and_update(
         {"username": session["user"]},
         {"$pull": {"favourites": recipe_id}}
@@ -237,6 +236,8 @@ def voting(recipe):
     recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
     name=recipe.get("name")
     method=recipe.get("method").split(".")
+    ingredients = recipe.get("ingredients").split(",")
+    time = recipe.get("time")
     if request.method == "POST":
         votes={
             "vote": request.form.getlist('vote'),
@@ -245,7 +246,10 @@ def voting(recipe):
         }
         mongo.db.vote.insert_one(votes)
         flash("Thank you for voting")
-        return render_template("recipecard.html", recipe=recipe, method=method)
+    
+        return render_template("recipecard.html", recipe=recipe, 
+                                method=method, ingredients=ingredients,
+                                time=time)
 
 
 if __name__ == "__main__":

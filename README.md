@@ -163,7 +163,6 @@ Below is the design of how the collections will work together during the project
 <h2 id="new-features"><u>Features Left to Implement</u></h2>
 <ol>
 <li>I would ideally like to connect to a supermarket API which is could then link to the ingredients from each recipe to display the prices of these items and give users the option to purchase them from the recipecard page.</li>
-<li>I think that it would also be beneficial to incorporate a relational database so that a user's favourites & recipes could be stored against that users account. It would also be helpful to allocate each dish with the number of upvotes & downvotes rather than pulling all of the dish names from the votes collection in MongoDB. This is because as the collection grows in size it will take longer to pull all the data required to generate the leaderboard values.</li>
 <li>I would like to add additional functionality to the add & edit recipes form. I would like the user to be able to add the method and ingredients as a separate entry for each item. But I would like them still to be entered as one value in the MongoDB database. This would then allow me to parse the ingredients & method onto separate lines for each entry made by the user.</li>
 <li>I would like to add additional security when deleting recipes such as an extra check to ensure the user wants to delete the item.</li>
 </ol>
