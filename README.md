@@ -331,7 +331,8 @@ The MONGO_URI connection string can be found by doing the following in MongoDB:
 <ul>
 <li>Font Awesome used for all icons and symbols.
 </li>
-<li>Generic Image for recipe found at <a href="https://media.istockphoto.com/vectors/fork-knife-icon-vector-id468611140?k=20&m=468611140&s=170667a&w=0&h=vv4BkhlRA35rC-CkIvRBf-r4X9kcFSEQGnzNiJOFH5s=">https://media.istockphoto.com/vectors/fork-knife-icon-vector-id468611140?k=20&m=468611140&s=170667a&w=0&h=vv4BkhlRA35rC-CkIvRBf-r4X9kcFSEQGnzNiJOFH5s=</a></li></ul>
+<li>Generic Image for recipe found at <a href="https://media.istockphoto.com/vectors/fork-knife-icon-vector-id468611140?k=20&m=468611140&s=170667a&w=0&h=vv4BkhlRA35rC-CkIvRBf-r4X9kcFSEQGnzNiJOFH5s=">https://media.istockphoto.com/vectors/fork-knife-icon-vector-id468611140?k=20&m=468611140&s=170667a&w=0&h=vv4BkhlRA35rC-CkIvRBf-r4X9kcFSEQGnzNiJOFH5s=</a></li>
+<li>Image to show responsive design from <a href="http://ami.responsivedesign.is/#">http://ami.responsivedesign.is/#</a></li></ul>
 
 
 

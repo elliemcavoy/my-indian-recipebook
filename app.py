@@ -162,10 +162,10 @@ def search():
 
 @app.route("/recipecard/<recipe>")
 def recipecard(recipe):
-    recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
-    method=recipe.get("method").split(".")
-    ingredients=recipe.get("ingredients").split(",")
-    time=recipe.get("time")
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
+    method = recipe.get("method").split(".")
+    ingredients = recipe.get("ingredients").split(",")
+    time = recipe.get("time")
     return render_template("recipecard.html", recipe=recipe,
                             method=method, ingredients=ingredients,
                             time=time)

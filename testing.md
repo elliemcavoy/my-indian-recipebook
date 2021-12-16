@@ -161,4 +161,5 @@ Here are details of bugs that were discovered during manual testing and how they
 
 <h3>Bugs still to be rectified</h3>
 <ul>
-<li>Favourites recipecard is not correctly spliting the ingredients and method information as it does in the original recipecard.</li>
+<li>Ideally I would like to call the 'recipecard' function at the end of the 'voting' and 'add to favourites' functionality. However when attempting this, I get an error advising the recipe cannot be called as a dict. So although all of the functionality works as it is supposed to, it would clean up the code if I were able to implement this.</li>
+</ul>
