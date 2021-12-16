@@ -153,7 +153,8 @@ Here are details of bugs that were discovered during manual testing and how they
 <li>Including Functions within Functions</li>
 <ul>
 <li>While testing and building the code, there was a lot of repetition of the same lines of code. Once I was sure each function was doing what it needed to do, I began including previous functions within new functions to avoid repetition.</li>
-<li>The 'my_profile' function is included in the 'remove_favourite' function as after the recipe is removed, the profile page needs to be reloaded.</li></ul></ul>
+<li>The 'my_profile' function is included in the 'remove_favourite' function as after the recipe is removed, the profile page needs to be reloaded.</li>
+<li>The 'my_profile' function is included in the 'delete_recipe' function as after the recipe is deleted, the user is redirected back to the profile page.</li></ul></ul>
 
 <h3>Bugs still to be rectified</h3>
 <ul>

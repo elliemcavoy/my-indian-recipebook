@@ -209,27 +209,15 @@ def remove_favourite(recipe):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     return my_profile(username)
-    #my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
-    #user=mongo.db.users.find_one({"username": session["user"]})
-    #recipes=mongo.db.recipes.find()
-    #return render_template("my_profile.html", 
-                            #username=username, my_recipes=my_recipes,
-                            #recipes=recipes, user=user)
-
 
 
 @app.route("/delete_recipe/<recipe>")
 def delete_recipe(recipe):
-    mongo.db.recipes.remove({"_id": ObjectId(recipe)})
+    mongo.db.recipes.delete_one({"_id": ObjectId(recipe)})
     flash("Recipe Successfully Deleted")
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    my_recipes=mongo.db.recipes.find({"created_by": session["user"]})
-    user=mongo.db.users.find_one({"username": session["user"]})
-    recipes=mongo.db.recipes.find()
-    return render_template("my_profile.html", 
-                            username=username, my_recipes=my_recipes,
-                            recipes=recipes, user=user)
+    return my_profile(username)
 
 
 @app.route("/edit_recipe/<recipe>", methods=["GET", "POST"])
