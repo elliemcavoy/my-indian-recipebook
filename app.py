@@ -183,7 +183,8 @@ def add_favourites(recipe):
         )
         flash("Recipe Added to Favourites")
 
-    return render_template("recipecard.html", recipe=recipe)
+    recipe = recipe.get("_id")
+    return recipecard(recipe)
 
 
 @app.route("/remove_favourite/<recipe>", methods=["GET", "POST"])
@@ -235,9 +236,6 @@ def edit_recipe(recipe):
 def voting(recipe):
     recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
     name=recipe.get("name")
-    method=recipe.get("method").split(".")
-    ingredients = recipe.get("ingredients").split(",")
-    time = recipe.get("time")
     if request.method == "POST":
         votes={
             "vote": request.form.getlist('vote'),
@@ -246,10 +244,8 @@ def voting(recipe):
         }
         mongo.db.vote.insert_one(votes)
         flash("Thank you for voting")
-    
-        return render_template("recipecard.html", recipe=recipe, 
-                                method=method, ingredients=ingredients,
-                                time=time)
+    recipe=recipe.get("_id")
+    return recipecard(recipe)
 
 
 if __name__ == "__main__":
