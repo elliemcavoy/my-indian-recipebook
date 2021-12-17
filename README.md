@@ -4,6 +4,7 @@
 <img src="static/images/responsive.JPG">
 <p>My Indian Recipebook is a web based application that can be used to share recipes for Indian cuisine. Users are able to add their own recipes, edit & delete them, read other user's recipes and add recipes to their favourites.</p> 
 <h3>Log In Credentials for Testing</h3>
+<p>Please use the below log in details when testing the 'admin' user functionality.</p>
 <h4>Admin User<h4>
 <p>Username: admin<br>
 Password: h3ll0123</p>
@@ -186,9 +187,9 @@ Below is the design of how the collections will work together during the project
 <h3>Libraries Used</h3>
 <ul>
 <li>JQuery</li>
-<li><a href="https://materializecss.com/">Materialize</a> - Used to provide page structure, Navbar design and form components. Also used to provide generic styling. </li>
-<li><a href="https://fontawesome.com/">Font Awesome</a>  - Icons for forms and styling.</li>
-<li><a href="https://fonts.google.com/">Google Fonts</a> - Used to create a look in keeping with the website aim and to create uniform styling throughout.</li>
+<li><a href="https://materializecss.com/" target="_blank">Materialize</a> - Used to provide page structure, Navbar design and form components. Also used to provide generic styling. </li>
+<li><a href="https://fontawesome.com/" target="_blank">Font Awesome</a>  - Icons for forms and styling.</li>
+<li><a href="https://fonts.google.com/" target="_blank">Google Fonts</a> - Used to create a look in keeping with the website aim and to create uniform styling throughout.</li>
 </ul>
 <h3>Python Frameworks & Libraries</h3>
 <ul>
@@ -317,17 +318,17 @@ The MONGO_URI connection string can be found by doing the following in MongoDB:
 <li>Card class taken from Materialize which inlcudes a floating button.</li>
 <li>Form components HTML & CSS classes taken from Materialize including the Jquery to operate.</li>
 <li>Collapsible component taken from Materialize including the Jquery.</li>
-<li>Pagination implemented using code from <a href="https://stackoverflow.com/questions/54053873/implementation-of-pagination-using-flask-paginate-pymongo">https://stackoverflow.com/questions/54053873/implementation-of-pagination-using-flask-paginate-pymongo</a>.</li>
+<li>Pagination implemented using code from <a href="https://stackoverflow.com/questions/54053873/implementation-of-pagination-using-flask-paginate-pymongo" target="_blank">https://stackoverflow.com/questions/54053873/implementation-of-pagination-using-flask-paginate-pymongo</a>.</li>
 <li>Google Fonts utilized for all font styles within the project.</li></ul>
 
 <h3>Code</h3>
 <ul>
-<li><a href="https://docs.mongodb.com/">MongoDB Documentation</a> used to help implement the search function and the pull method used in removing an item from favourites.</li>
-<li><a href="https://stackoverflow.com/questions/54053873/implementation-of-pagination-using-flask-paginate-pymongo">Stack Overflow - Implementation of Pagination</a> which was used to implement the pagination on the 'recipes' page.</li>
+<li><a href="https://docs.mongodb.com/" target="_blank">MongoDB Documentation</a> used to help implement the search function and the pull method used in removing an item from favourites.</li>
+<li><a href="https://stackoverflow.com/questions/54053873/implementation-of-pagination-using-flask-paginate-pymongo" target="_blank">Stack Overflow - Implementation of Pagination</a> which was used to implement the pagination on the 'recipes' page.</li>
 <li>Tutor Support assisted with adding the recipe ObjectId into the 'favourites' array and then retrieving the recipe using the ObjectId.</li>
 <li>Code Institute Turtorials were used for reference when creating functions.</li>
 <li>Task Manager Mini Project. Login, Register & Log Out functions taken from this project and just modified to fit in with my milestone project. Other functionality was based around Task Manager function such as the 'add recipe' and 'edit recipe' functions. </li>
-<li><a href="https://www.geeksforgeeks.org/python-counter-objects-elements/">Geeks for Geeks - Python Counter</a> used to help implement the Counter functionality in the voting function.</li>
+<li><a href="https://www.geeksforgeeks.org/python-counter-objects-elements/" target="_blank">Geeks for Geeks - Python Counter</a> used to help implement the Counter functionality in the voting function.</li>
 
 
 </ul>
@@ -336,8 +337,8 @@ The MONGO_URI connection string can be found by doing the following in MongoDB:
 <ul>
 <li>Font Awesome used for all icons and symbols.
 </li>
-<li>Generic Image for recipe found at <a href="https://media.istockphoto.com/vectors/fork-knife-icon-vector-id468611140?k=20&m=468611140&s=170667a&w=0&h=vv4BkhlRA35rC-CkIvRBf-r4X9kcFSEQGnzNiJOFH5s=">https://media.istockphoto.com/vectors/fork-knife-icon-vector-id468611140?k=20&m=468611140&s=170667a&w=0&h=vv4BkhlRA35rC-CkIvRBf-r4X9kcFSEQGnzNiJOFH5s=</a></li>
-<li>Image to show responsive design from <a href="http://ami.responsivedesign.is/#">http://ami.responsivedesign.is/#</a></li></ul>
+<li>Generic Image for recipe found at <a href="https://media.istockphoto.com/vectors/fork-knife-icon-vector-id468611140?k=20&m=468611140&s=170667a&w=0&h=vv4BkhlRA35rC-CkIvRBf-r4X9kcFSEQGnzNiJOFH5s=" target="_blank">https://media.istockphoto.com/vectors/fork-knife-icon-vector-id468611140?k=20&m=468611140&s=170667a&w=0&h=vv4BkhlRA35rC-CkIvRBf-r4X9kcFSEQGnzNiJOFH5s=</a></li>
+<li>Image to show responsive design from <a href="http://ami.responsivedesign.is/#" target="_blank">http://ami.responsivedesign.is/#</a></li></ul>
 
 
 
