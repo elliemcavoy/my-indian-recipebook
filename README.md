@@ -1,7 +1,7 @@
 <h1>My Indian Recipebook</h1>
 <h4><a href="" target="_blank">GitHub Link</a></h4>
 <h4><a href="" target="_blank">Deployed Project</a></h4>
-<img src="">
+<img src="static/images/responsive.JPG">
 <p>My Indian Recipebook is a web based application that can be used to share recipes for Indian cuisine. Users are able to add their own recipes, edit & delete them, read other user's recipes and add recipes to their favourites.</p> 
 <h2>Table of Contents</h2>
 <ol>
