@@ -165,6 +165,7 @@ Below is the design of how the collections will work together during the project
 <li>I would ideally like to connect to a supermarket API which is could then link to the ingredients from each recipe to display the prices of these items and give users the option to purchase them from the recipecard page.</li>
 <li>I would like to add additional functionality to the add & edit recipes form. I would like the user to be able to add the method and ingredients as a separate entry for each item. But I would like them still to be entered as one value in the MongoDB database. This would then allow me to parse the ingredients & method onto separate lines for each entry made by the user.</li>
 <li>I would like to add additional security when deleting recipes such as an extra check to ensure the user wants to delete the item.</li>
+<li>As mentioned in the 'Manual Testing' section, I would like to eliminate the votes collection and instead insert the votes directly into the recipe document in the recipes collection. So, everytime a user either upvotes or downvotes for a recipe, it will add to the count for each in the recipe document. I could then change the leaderboard functionality to pull the recipe with the highest number of upvotes.</li>
 </ol>
 
 
@@ -237,7 +238,7 @@ Please see below a brief overview of the testing carried out. Any issues found a
 | Delete Recipe (user's own recipe) | No issues found     |
 | Delete Recipe (admin user) | No issues found     | 
 | Add to favourites | ISSUE FOUND     | Y
-| View favourites recipecard | ISSUE FOUND  | N
+| View favourites recipecard | ISSUE FOUND  | Y
 
 
 

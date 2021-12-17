@@ -105,7 +105,7 @@ I manually tested the following to make sure they worked as designed:
 <li>I have tested each page on all screen sizes to ensure the design is consistent no matter what device it is being viewed on.</li>
 <li>The navbar, as mentioned above, will adapt depending on the screen size to include a collapsible navbar on smaller screens.</li>
 <li>The cards used to display the recipes & the favourite recipes are designed to take up 4 columns on a medium & large sized screen. They then change to display across 6 columns on a small screen and then across all 12 columns on an extra small screen such as a smartphone. This means that they are easy to read no matter what size screen they are viewed on.</li>
-<li></li>
+<li>The forms used for the registration, log in, add and edit recipe are responsive and fit onto each screen size.</li>
 </ul>
 
 <h3>Bugs Discovered</h3>
@@ -131,7 +131,17 @@ Here are details of bugs that were discovered during manual testing and how they
 <ul>
 <li>I added an if statement onto the recipecard.html page to only show the 'Add to favourite' button if a session user was present i.e. if the user was logged in as a registered user.</li></ul>
 <li>The 'Add to favourites' function was not originally using the most effective method. As it was adding the favourites to a new collection rather than assigning them to the user, eventually the collection would have been very large and would have slowed down the functionality. </li>
+<ul>
+<li>I removed the favourites collection and instead added a new key:value pair to the users collection.</li>
+<li>The key is labelled as 'favourites' and the value is an array which will contain all of the ObjectId's of the recipes added to favourites by the user.</li>
+<li>I then altered the original add_favourites function to find the logged in user in the collection and update the 'favourites' array with the recipe ObjectId.</li>
+<li>To parse the recipes onto the My Profile page, two for statements were used and then an if statement to match the favourite recipe ID with the recipe ID in the recipes collection and gather all the data from there.</li>
+<li>In order for a the key:value to be automatically added to a user's document when they register, I added a key and a value of a blank array to the registration functionality. </li>
+<li>The remove_favourite function was also amended to remove the recipe ID from the user's document rather than from the favourites collection.</li>
+</ul>
 <li>The 'edit recipe' form had the image URL as a mandatory field and also had no if statement for if no image was provided.</li>
+<ul>
+<li>I used the same if statement functionality from the 'add_recipe' function and removed the 'required' attribute from the image section of the form.</li></ul>
 <li>A responsive design issue was discovered when the application was displayed on a smaller screen. The font size of the main heading in the navbar was too large on smaller screens meaning the full heading could not be seen. </li>
 <ul>
 <li>I added some custom CSS styling to change the font size of the main heading at different screen sizes. This meant that the full heading is displayed no matter the size of the screen.</li></ul>
@@ -146,7 +156,7 @@ Here are details of bugs that were discovered during manual testing and how they
 <ul>
 <li>Originally, the favourites recipes were stored in a separate database and when a user clicked the 'Add to favourites' button, all the details of the recipe were copied to a new database.</li>
 <li>Then when a user visited their profile, their favourite recipes were pulled from the favourites collection by searching for username in the 'added by' field.</li>
-<li>Please see below the original code for adding to favourites:] which was very long and not efficient:
+<li>Please see below the original code for adding to favourites, which was very long and inefficient:
 <img src="static/images/add_favourites.JPG"></li>
 <li>I then created a new key, value pair in the users collection so that each user has a field called 'favourites'.</li>
 <li>Initially I tried to use the aggregate functionality to match a user and add the recipe ID into the favourites field with the below code:
@@ -157,12 +167,13 @@ Here are details of bugs that were discovered during manual testing and how they
 <ul>
 <li>While testing and building the code, there was a lot of repetition of the same lines of code. Once I was sure each function was doing what it needed to do, I began including previous functions within new functions to avoid repetition.</li>
 <li>The 'my_profile' function is included in the 'remove_favourite' function as after the recipe is removed, the profile page needs to be reloaded.</li>
-<li>The 'my_profile' function is included in the 'delete_recipe' function as after the recipe is deleted, the user is redirected back to the profile page.</li></ul>
+<li>The 'my_profile' function is included in the 'delete_recipe' function as after the recipe is deleted, the user is redirected back to the profile page.</li>
+<li>The 'recipecard' function is now called at the end of the 'voting' and 'add_favourites' functions and the repetitive code removed.</li></ul>
 <li>Removing Unnessecary function and templates.</li>
 <ul>
-<li>Once I started reusing code and functionality, I realised that the favourite_recipecard.html and the favourite_recipecard function were no longer nessecary as I could just reused the recipecard template and function.</li></ul></ul>
+<li>Once I started reusing code and functionality, I realised that the favourite_recipecard.html and the favourite_recipecard function were no longer nessecary as I could just reuse the recipecard template and function.</li></ul></ul>
 
 <h3>Bugs still to be rectified</h3>
 <ul>
-<li>Ideally I would like to call the 'recipecard' function at the end of the 'voting' and 'add to favourites' functionality. However when attempting this, I get an error advising the recipe cannot be called as a dict. So although all of the functionality works as it is supposed to, it would clean up the code if I were able to implement this.</li>
+<li>I would like to remove the 'votes' collection and instead enter the number of votes into the recipe itself. So although the voting functionality works on the front end, it is not the most efficient method and I would like to rectifiy this in the future.</li>
 </ul>
