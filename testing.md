@@ -3,6 +3,7 @@
 <h3>Manual Testing of User Stories</h3>
 <ol>
 <li>As a user, I want to be able to view all of the recipes and to be able to search for recipes containing a specific word.</li>
+<img src="static/images/recipes.JPG">
 <ul>
 <li>By comparing the live recipes.html page with the recipes collection in MongoDB, I can see that all recipes currently listed are being parsed onto the page. If the number of recipes exceeds 6, the remaining recipes will be added to a new page which is correct as per the pagination function. This allows users to see all recipes but ensures the amount of data on the page is not too overwhelming. </li>
 <li>By typing a keyword or name into the search bar, and clicking 'Search', a list of all recipes containing the above mentioned word is generated. Clicking the 'reset' button just brings back a list of all recipes.</li>
@@ -10,26 +11,32 @@
 </ul>
 <li>As a user, I want to be able to see the top three rated recipes at any given time.
 </li>
+<img src="static/images/leaderboard.JPG">
 <ul>
 <li>By scrolling to the bottom of the index.html page, I can see the Leaderboard displayed.</li>
 <li>To test that it is correctly displaying the current favourite recipes, I chose recipes that were not currently displayed and upvoted them numerous times. Going back to the index.html page I as able to see that the leaderboard had changed to reflect the newly upvoted recipes.</li>
 </ul>
 <li>As a user, I want to be able to see the type of dish, ingredients, method and time to make the recipe.</li>
+<img src="static/images/recipecard.JPG">
 <ul>
 <li>Navigating to the recipes page, I am able to click on either the recipe name or the view button to display the recipecard for each recipe.</li>
 <li>Once the recipecard is displayed, the type of recipe and time to make are already displayed. In order to see the ingredients and method in more details, I just need to click on the link for each collapsible and these details are displayed.</li>
 </ul>
 <li>As a user, I want to ability to create a profile by entering a username and password.</li>
+<img src="static/images/register.JPG">
 <ul>
 <li>By clicking on the 'register' link visible from the homepage, I am able to enter a username and password of my choice (minimum number of characters must be met).</li>
 <li>By checking my MongoDB collection 'users' I am then able to see that this user and hashed password have been added.</li>
 </ul>
 <li>As a registered user, I want the ability to log in and log out of my account.</li>
+<img src="static/images/login.JPG">
+<img src="static/images/logout.JPG">
 <ul>
 <li>I tested this using a previously created account. After clicking on the 'Log In' link and inputting the username and password I recieved a message to welcome me to my profile. Once logged in I was able to see more links such as 'add recipe' and 'my profile'. </li>
 <li>The 'Log Out' link was also now visible and clicking this successfully ended the session and a message was displayed advising I had been logged out. The additional links are no longer visible.</li>
 </ul> 
 <li>As a registered user, I want to be able add recipes so that other user can view them.</li>
+<img src="static/images/add-recipe.JPG">
 <ul>
 <li>Once logged in, I am able to click on the 'Add Recipe' link in the navbar. A form is displayed allowing me to input details for the new recipes.</li>
 <li>The meal type option is displayed as a drop down as there are only 4 categories that can be chosen.</li>
@@ -39,6 +46,7 @@
 <li>Upon checking the MongoDB collection - recipes - I can see that the recipe has been added with all of the correct information. As I didn't enter an image URL, the generic image I set up was inputted instead which is the result I was expecting. This means that when parsed, an image will still be displayed.</li>
 </ul>
 <li>As a registered user, I want to be able to see all of my recipes via my Profile and have the ability to edit & delete them if required.</li>
+<img src="static/images/my-recipes.JPG">
 <ul>
 <li>Once logged in, I am redirected to my Profile. The first section of 'My Profile' page shows all of the recipes that I have added as this user. 
 </li>
@@ -49,6 +57,8 @@
 <li>A bug was discovered because the image URL field was mandatory and I had not included the if statement to insert a generic image if none provided. Please see the below section for how this bug was fixed. </li>
 </ul>
 <li>As a registered user, I want to be able to add other user's recipes to 'My Favourites' and have easy access to them through my Profile.</li>
+<img src="static/images/add-to-favourites.JPG"><br>
+<img src="static/images/my-favourites.JPG">
 <ul>
 <li>An issue arose early during the testing of this section meaning that even unregistered users could add recipes to their favourites which should not have been available to them. Please see below details of this and the fixes put in place.</li>
 <li>After the fix & once logged in, I was able to view any recipe and once on the recipecard I was able to click on the 'Add to Favourites' button.</li>
@@ -56,10 +66,12 @@
 </ul>
 <li>As a registered user, I want to be able to vote (upvote or downvote) on other user's recipes.</li>
 <ul>
+<img src="static/images/voting.JPG">
 <li>Once logged in, I can select a recipe to view and once on the recipecard page I can scroll to the bottom to see the options to vote.</li>
 <li>There are two radio buttons with thumbs up and thumbs down next to them. Once I have selected one and clicked the 'Vote' button, I get a message to say 'Thank you for voting".</li>
 </ul>
 <li>As the admin user, I want to be able to remove and edit any recipe regardless of which user added it to the application.</li>
+<img src="static/images/admin.JPG">
 <ul>
 <li>When logged in as 'Admin' and on the 'Recipes' page, I am able to see a 'delete' and 'edit' button for each recipe.</li>
 <li>When clicking on'delete' the recipe is removed.</li>
@@ -79,6 +91,8 @@ I manually tested the following to make sure they worked as designed:
 <li>The largescreen navbar contains the logo and then the page links visible to the right hand side.</li>
 <li>When on a smaller screen, the navbar links are moved into the collapsible navbar to the left hand side or the logo.</li>
 <li>The full logo is always visible but the font size reduces as the screen size does to ensure this is possible.</li>
+<img src="static/images/navbar.JPG">
+<img src="static/images/collapsible-navbar.JPG">
 </ul>
 
 <h4>Flashes</h4>
@@ -106,6 +120,10 @@ I manually tested the following to make sure they worked as designed:
 <li>The navbar, as mentioned above, will adapt depending on the screen size to include a collapsible navbar on smaller screens.</li>
 <li>The cards used to display the recipes & the favourite recipes are designed to take up 4 columns on a medium & large sized screen. They then change to display across 6 columns on a small screen and then across all 12 columns on an extra small screen such as a smartphone. This means that they are easy to read no matter what size screen they are viewed on.</li>
 <li>The forms used for the registration, log in, add and edit recipe are responsive and fit onto each screen size.</li>
+
+<img src="static/images/largescreen.JPG">
+<img src="static/images/medium-screen.JPG">
+<img src="static/images/small-screen.JPG">
 </ul>
 
 <h3>Bugs Discovered</h3>

@@ -3,6 +3,10 @@
 <h4><a href="" target="_blank">Deployed Project</a></h4>
 <img src="static/images/responsive.JPG">
 <p>My Indian Recipebook is a web based application that can be used to share recipes for Indian cuisine. Users are able to add their own recipes, edit & delete them, read other user's recipes and add recipes to their favourites.</p> 
+<h3>Log In Credentials for Testing</h3>
+<h4>Admin User<h4>
+<p>Username: admin<br>
+Password: h3ll0123</p>
 <h2>Table of Contents</h2>
 <ol>
 <li><a href="#ux">UX</a></li>
