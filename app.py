@@ -129,7 +129,7 @@ def add_recipe():
         image = request.form.get("image")
         # if no image provided stock image inserted
         if len(image) == 0:
-            image = ("static/images/knife&fork.jpg")
+            image = ("/static/images/knife&fork.jpg")
         recipe = {
             "meal_type_name": request.form.get("meal_type_name"),
             "name": request.form.get("name"),
@@ -196,11 +196,11 @@ def search():
     any results.
     """
     query = request.form.get("query")
-    recipes = mongo.db.recipes.find({"$text": {"$search": query}})
-    results = list(recipes)
+    recipe_results = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    results = list(recipe_results)
     if len(results) == 0:
         flash("No recipes found")
-    return render_template("recipes.html", recipes=recipes)
+    return render_template("recipes.html", recipes=recipe_results)
 
 
 # Recipecard
