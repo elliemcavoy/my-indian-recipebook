@@ -220,6 +220,8 @@ Below is the design of how the collections will work together during the project
 All pages of HTML content have been checked by the HTML validator and have passed.
 <li>W3C CSS Validator</li>
 <img src="static/images/css-validator.JPG">
+<li>PEP8 Compliant</li>
+<img src="static/images/pep8.JPG">
 </ul>
 
 <h4>Manual Testing</h4>
