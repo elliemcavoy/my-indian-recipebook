@@ -16,8 +16,8 @@
           </div>
           <div class="card-content center-align">
             <span class="card-title"><a href="{{ url_for('recipecard', recipe=recipe._id) }}" class="page-text-link"> {{ recipe.name }} </a></span>
-            <a href="{{ url_for ('edit_recipe',recipe=recipe._id) }}" class="btn orange-btn">Edit</a>
-            <a href="{{ url_for ('delete_recipe',recipe=recipe._id) }}" class="btn grey-btn">Delete</a>
+            <a href="{{ url_for ('edit_recipe', recipe=recipe._id) }}" class="btn orange-btn">Edit</a>
+            <a href="{{ url_for ('delete_recipe', recipe=recipe._id) }}" class="btn grey-btn">Delete</a>
           </div>
         </div>
       </div>
