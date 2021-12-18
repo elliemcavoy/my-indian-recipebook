@@ -66,7 +66,7 @@ I have kept the design of the webpages simple and easy to navigate.
 <li>By using the card class from materialize, whenever the recipes are shown, the stlying and spacing is the same.</li>
 <li>Again with the collapsible class, all of the recipes will be displayed in the same format.</li>
 <li>To ensure that all of the recipes show an image, I have added a generic image to be displayed if an image is not provided by the user. This will allow the design to be the same for each recipe that is added.</li>
-<li>The colours used for this project are: rgba(255, 136, 0), rgba(116, 115, 115, 0.911), grey </li></ul>
+</ul>
 
 <h2 id="defensive-design">Defensive Design</h2>
 <p>Defensive design for this application was built into a lot of the functions as well as the templates. This means that only registered user can access certain parts of the application and edits can only be made by the relevant people.</p>
