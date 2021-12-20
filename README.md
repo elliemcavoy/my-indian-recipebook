@@ -1,7 +1,8 @@
 <h1>My Indian Recipebook</h1>
+
+<img src="static/images/responsive.JPG"><br>
 <h4><a href="https://github.com/elliemcavoy/my-indian-recipebook" target="_blank">GitHub Link</a></h4>
-<h4><a href="" target="_blank">Deployed Project</a></h4>
-<img src="static/images/responsive.JPG">
+<h4><a href="https://my-indian-recipebook.herokuapp.com/" target="_blank">Deployed Project</a></h4><br>
 <p>My Indian Recipebook is a web based application that can be used to share recipes for Indian cuisine. Users are able to add their own recipes, edit & delete them, read other user's recipes and add recipes to their favourites.</p> 
 <h3>Log In Credentials for Testing</h3>
 <p>Please use the below log in details when testing the 'admin' user functionality.</p>
@@ -251,7 +252,7 @@ Please see below a brief overview of the testing carried out. Any issues found a
 
 
 <h1 id="deployment"><u>Deployment</u></h1>
-This project has been deployed via Heroku and can be accessed here - .<br>
+This project has been deployed via Heroku and can be accessed <a href="https://my-indian-recipebook.herokuapp.com/" target="_blank">here</a> .<br>
 
 If you would like to deploy this project for yourself please see below the steps I followed to deploy and you can do the same:
 <ol>
