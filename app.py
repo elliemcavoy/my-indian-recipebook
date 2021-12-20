@@ -282,15 +282,15 @@ def edit_recipe(recipe):
         image = request.form.get("image")
         if len(image) == 0:
             image = ("/static/images/knife&fork.jpg")
-            submit = {
-                "meal_type_name": request.form.get("meal_type_name"),
-                "name": request.form.get("name"),
-                "ingredients": request.form.get("ingredients"),
-                "method": request.form.get("method"),
-                "time": request.form.get("time"),
-                "image": image,
-                "created_by": session["user"]
-            }
+        submit = {
+            "meal_type_name": request.form.get("meal_type_name"),
+            "name": request.form.get("name"),
+            "ingredients": request.form.get("ingredients"),
+            "method": request.form.get("method"),
+            "time": request.form.get("time"),
+            "image": image,
+            "created_by": session["user"]
+        }
         mongo.db.recipes.update({"_id": ObjectId(recipe)}, submit)
         flash("Recipe Updated")
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
